@@ -5,12 +5,15 @@
 #include <Windows.h>
 using namespace std;
 
-
+typedef struct 
+{
+    int X, Y;
+} TPoint;
 
 int main()
 {
     SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);   
+    SetConsoleOutputCP(1251); 
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
