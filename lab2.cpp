@@ -252,12 +252,63 @@ double Triangle::CalcPerimeter() {
     return P;
 }
 
+class Parallelogram {
+    Vector a, b;
+public:
+    Parallelogram();
+    Parallelogram(int x1, int y1, int x2, int y2);
+    void Init(int x1, int y1, int x2, int y2);
+    void Read();
+    void Display();
+    double CalcSquare();
+};
+
+Parallelogram::Parallelogram() {
+    a.Init(0, 0);
+    b.Init(0, 0);
+};
+
+Parallelogram::Parallelogram(int x1, int y1, int x2, int y2) {
+    a.Init(x1, y1);
+    b.Init(x2, y2);
+}
+
+void Parallelogram::Init(int x1, int y1, int x2, int y2) {
+    a.Init(x1, y1);
+    b.Init(x2, y2);
+}
+
+void Parallelogram::Read() {
+    int x1, y1, x2, y2;
+    cout << "Введите координаты первого из векторов, на которых построен параллелограм (x1, y1): ";
+    cin >> x1 >> y1;
+    cout << "Введите координаты второго из векторов, на которых построен параллелограм (x1, y1): ";
+    cin >> x2 >> y2;
+    a.Init(x1, y1);
+    b.Init(x2, y2);
+}
+
+void Parallelogram::Display() {
+    cout << "Параллелограм, построенный на векторах a и b:" << endl;
+    a.Display();
+    b.Display();
+}
+
+double Parallelogram::CalcSquare() {
+    double S, len_a, len_b, prod, cosinus, sinus;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    prod = a.CalcScalarProd(&b);
+    cosinus = prod / (len_a * len_b);
+    sinus = sqrt(1 - cosinus * cosinus);
+    S = len_a * len_b * sinus;
+    return S;
+}
+
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-
-    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
