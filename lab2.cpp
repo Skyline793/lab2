@@ -2,6 +2,7 @@
 //
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <cmath>
 #include <Windows.h>
 using namespace std;
 
@@ -29,11 +30,23 @@ void InitVector(Vector* v, int x, int y) {
     v->coord.Y = y;
 }
 
+double CalcVectLen(Vector v) {
+    double len;
+    len = sqrt(v.coord.X * v.coord.X + v.coord.Y * v.coord.Y);
+    return len;
+}
+
+double CalcScalarProd(Vector v1, Vector v2) {
+    double prod;
+    prod = v1.coord.X * v2.coord.X + v1.coord.Y * v2.coord.Y;
+    return prod;
+}
+
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-    
+  
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
