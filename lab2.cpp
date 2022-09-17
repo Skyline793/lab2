@@ -6,6 +6,30 @@
 using namespace std;
 
 
+class Point {
+    int X, Y;
+public:
+    Point() {
+        X = Y = 0;
+    }
+    Point(int x, int y) {
+        this->X = x;
+        this->Y = y;
+    }
+    void Init(int x, int y) {
+        this->X = x;
+        this->Y = y;
+    }
+    int GetX() {
+        return this->X;
+    }
+    int GetY() {
+        return this->Y;
+    }
+    void Display() {
+        cout << "(" << X << ", " << Y << ")";
+    }
+};
 
 int main()
 {
