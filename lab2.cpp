@@ -1,6 +1,6 @@
 ﻿// lab2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <Windows.h>
 using namespace std;
@@ -10,10 +10,30 @@ typedef struct
     int X, Y;
 } TPoint;
 
+typedef struct {
+    TPoint coord;
+} Vector;
+
+void ReadVector(Vector* v) {
+    printf("Введите координаты вектора (x, y): ");
+    scanf("%d%d", &v->coord.X, &v->coord.Y);
+    
+}
+
+void DisplayVector(Vector v) {
+    printf("Вектор\nКоординаты: (%d,%d)\n", v.coord.X, v.coord.Y);
+}
+
+void InitVector(Vector* v, int x, int y) {
+    v->coord.X = x;
+    v->coord.Y = y;
+}
+
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
+    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
