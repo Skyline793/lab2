@@ -9,27 +9,39 @@ using namespace std;
 class Point {
     int X, Y;
 public:
-    Point() {
-        X = Y = 0;
-    }
-    Point(int x, int y) {
-        this->X = x;
-        this->Y = y;
-    }
-    void Init(int x, int y) {
-        this->X = x;
-        this->Y = y;
-    }
-    int GetX() {
-        return this->X;
-    }
-    int GetY() {
-        return this->Y;
-    }
-    void Display() {
-        cout << "(" << X << ", " << Y << ")";
-    }
+    Point();
+    Point(int x, int y);
+    void Init(int x, int y);
+    int GetX();
+    int GetY();
+    void Display();
 };
+
+Point::Point() {
+    X = Y = 0;
+}
+
+Point::Point(int x, int y) {
+    this->X = x;
+    this->Y = y;
+}
+
+void Point::Init(int x, int y) {
+    this->X = x;
+    this->Y = y;
+}
+
+int Point::GetX() {
+    return this->X;
+}
+
+int Point::GetY() {
+    return this->Y;
+}
+
+void Point::Display() {
+    cout << "(" << X << ", " << Y << ")";
+}
 
 int main()
 {
