@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <Windows.h>
+#include <cmath>
 using namespace std;
 
 
@@ -41,6 +42,60 @@ int Point::GetY() {
 
 void Point::Display() {
     cout << "(" << X << ", " << Y << ")";
+}
+
+class Vector {
+    Point coord;
+public:
+    Vector();
+    Vector(int x, int y);
+    void Init(int x, int y);
+    void Display();
+    void Read();
+    double CalcVectLen();
+    double CalcScalarProd(Vector* v2);
+};
+
+Vector::Vector() {
+    this->coord.Init(0, 0);
+}
+
+Vector::Vector(int x, int y) {
+    this->coord.Init(x, y);
+}
+
+void Vector::Init(int x, int y) {
+    this->coord.Init(x, y);
+}
+
+void Vector::Read() {
+    int x, y;
+    cout << "Введите координаты вектора (x, y): ";
+    cin >> x >> y;
+    this->coord.Init(x, y);
+}
+
+void Vector::Display() {
+    cout << "Вектор с координатами: ";
+    this->coord.Display();
+    cout << endl;
+}
+
+double Vector::CalcVectLen() {
+    int x = this->coord.GetX(), y = this->coord.GetY();
+    double length;
+    length = sqrt(x * x + y * y);
+    return length;
+}
+
+double Vector::CalcScalarProd(Vector* v2) {
+    int x1 = this->coord.GetX();
+    int y1 = this->coord.GetY();
+    int x2 = v2->coord.GetX();
+    int y2 = v2->coord.GetY();
+    double prod;
+    prod = x1 * x2 + y1 * y2;
+    return prod;
 }
 
 int main()
