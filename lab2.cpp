@@ -7,16 +7,16 @@
 #define PI 3.14159265335
 using namespace std;
 
-
+//класс точка
 class Point {
-    int X, Y;
+    int X, Y; //координаты точки
 public:
-    Point();
-    Point(int x, int y);
-    void Init(int x, int y);
-    int GetX();
-    int GetY();
-    void Display();
+    Point(); //конструктор без параметров
+    Point(int x, int y); //конструктор с параметрами
+    void Init(int x, int y); //метод инициализации
+    int GetX(); //метод получения координаты X
+    int GetY(); //метод получения координаты Y
+    void Display(); //Метод вывода координат
 };
 
 Point::Point() {
@@ -45,16 +45,17 @@ void Point::Display() {
     cout << "(" << X << "," << Y << ")";
 }
 
+//класс вектор
 class Vector {
-    Point coord;
+    Point coord; //координаты вектор
 public:
-    Vector();
-    Vector(int x, int y);
-    void Init(int x, int y);
-    void Display();
-    void Read();
-    double CalcVectLen();
-    double CalcScalarProd(Vector* v2);
+    Vector(); //конструктор без параметров
+    Vector(int x, int y); //конструктор с параметрами
+    void Init(int x, int y); //метод инициализации
+    void Display(); //метод вывода 
+    void Read(); //метод ввода
+    double CalcVectLen(); //метод вычисления длины вектора
+    double CalcScalarProd(Vector* v2); //метод вычисления скалярного произведения векторов
 };
 
 Vector::Vector() {
@@ -99,17 +100,19 @@ double Vector::CalcScalarProd(Vector* v2) {
     return prod;
 }
 
+
+//класс окружность
 class Circle {
-    Point Center;
-    int R;
+    Point Center; //центр окружности
+    int R; //радиус
 public:
-    Circle();
-    Circle(int x, int y, int r);
-    void Init(int x, int y, int r);
-    void Display();
-    void Read();
-    void PrintEquation();
-    double CalcSquare();
+    Circle(); //конструктор без параметров
+    Circle(int x, int y, int r); //конструктор с параметрами
+    void Init(int x, int y, int r); //метод инициализации
+    void Display(); //метод вывода
+    void Read(); //метод ввода
+    void PrintEquation(); //метод вывода уравнения окружности
+    double CalcSquare(); //метод вычисления площади круга
 };
 
 Circle::Circle() {
@@ -179,16 +182,17 @@ double Circle::CalcSquare() {
     return S;
 }
 
-class Triangle {
-    Point A, B, C;
+//класс треугольник
+class Triangle { 
+    Point A, B, C; //вершины треугольника
 public:
-    Triangle();
-    Triangle(int x1, int y1, int x2, int y2, int x3, int y3);
-    void Init(int x1, int y1, int x2, int y2, int x3, int y3);
-    void Read();
-    void Display();
-    double CalcSquare();
-    double CalcPerimeter();
+    Triangle(); //конструктор без параметров
+    Triangle(int x1, int y1, int x2, int y2, int x3, int y3); //конструктор с параметрами 
+    void Init(int x1, int y1, int x2, int y2, int x3, int y3); //метод инициализации
+    void Read(); //метод ввода
+    void Display(); //метод вывода
+    double CalcSquare(); //метод вычисления площади
+    double CalcPerimeter(); //метод вычисления периметра
 };
 
 Triangle::Triangle() {
@@ -252,15 +256,16 @@ double Triangle::CalcPerimeter() {
     return P;
 }
 
+//класс параллелограм
 class Parallelogram {
-    Vector a, b;
+    Vector a, b; //вектора, на которых построен параллелограм
 public:
-    Parallelogram();
-    Parallelogram(int x1, int y1, int x2, int y2);
-    void Init(int x1, int y1, int x2, int y2);
-    void Read();
-    void Display();
-    double CalcSquare();
+    Parallelogram(); //конструктор без параметров
+    Parallelogram(int x1, int y1, int x2, int y2); //конструктор с параметрами
+    void Init(int x1, int y1, int x2, int y2); //метод инициализации
+    void Read(); //метод ввода
+    void Display(); //метод вывода
+    double CalcSquare(); //метод вычисления площади 
 };
 
 Parallelogram::Parallelogram() {
@@ -310,8 +315,8 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
     cout << "Тест класса вектор:" << endl;
-    Vector* V1 = new Vector;
-    Vector* V2 = new Vector(4, -3);
+    Vector* V1 = new Vector; //динамический объект
+    Vector* V2 = new Vector(4, -3); //динамический объект
     cout << "\nКонструктор без параметров и с параметрами:" << endl;
     V1->Display();
     V2->Display();
@@ -327,9 +332,8 @@ int main()
     cout << "Скалярное произведение (V1, V2)=" << V1->CalcScalarProd(V2) << endl;
     delete V1, V2;
 
-
     cout << "\n\nТест класса окружность:" << endl;
-    Circle* circles = new Circle[5];
+    Circle* circles = new Circle[5]; //динамический массив
     cout << "\nИнициализация динамического массива окружностей:" << endl;
     for (int i = 0; i < 5; i++) {
         circles[i].Init(i * 2, i - 3, i * i+1);
@@ -351,7 +355,7 @@ int main()
 
 
     cout << "\n\nТест класса треугольник:" << endl;
-    Triangle tr(0, 2, 3, -1, -3, 1);
+    Triangle tr(0, 2, 3, -1, -3, 1); //статический объект
     cout << "\nКонструктор с параметрами:" << endl;
     tr.Display();
     cout << "\nВвод координат вершин треугольника:" << endl;
@@ -362,7 +366,8 @@ int main()
 
 
     cout << "\n\nТест класса параллелограм:" << endl;
-    Parallelogram* prgrams[3];
+    //массив динамических объектов
+    Parallelogram* prgrams[3]; 
     for (int i = 0; i < 3; i++)
         prgrams[i] = new Parallelogram;
     cout << "\nВвод координат векторов, на которых построен параллелограм:" << endl;
