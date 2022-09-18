@@ -7,66 +7,66 @@
 #define PI 3.14159265335
 using namespace std;
 
-typedef struct 
-{
-    int X, Y;
+//структура точка
+typedef struct{
+    int X, Y; //координаты 
 } TPoint;
 
+//структура вектор
 typedef struct {
-    TPoint coord;
+    TPoint coord; //координаты вектора
 } Vector;
 
-void VectorInit(Vector* v, int x, int y) {
+void VectorInit(Vector* v, int x, int y) { //инициализация вектора
     v->coord.X = x;
     v->coord.Y = y;
 }
 
-void VectorRead(Vector* v) {
+void VectorRead(Vector* v) { //ввод вектора
     printf("Введите координаты вектора (x, y): ");
     scanf("%d%d", &v->coord.X, &v->coord.Y);
-    
 }
 
-void VectorDisplay(Vector v) {
+void VectorDisplay(Vector v) { //вывод вектора
     printf("Вектор с координатами: (%d,%d)\n", v.coord.X, v.coord.Y);
 }
 
-
-double VectCalcLen(Vector v) {
+double VectCalcLen(Vector v) { //вычисление длины вектора
     double len;
     len = sqrt(v.coord.X * v.coord.X + v.coord.Y * v.coord.Y);
     return len;
 }
 
-double CalcScalarProd(Vector v1, Vector v2) {
+double CalcScalarProd(Vector v1, Vector v2) { //вычисление векторного произведения
     double prod;
     prod = v1.coord.X * v2.coord.X + v1.coord.Y * v2.coord.Y;
     return prod;
 }
 
-typedef struct {
-    TPoint center;
-    int R;
+//структура окружность
+typedef struct { 
+    TPoint center; //координаты центра
+    int R; //радиус
 } Circle;
 
-void CircleInit(Circle* c, int x, int y, int r) {
+void CircleInit(Circle* c, int x, int y, int r) { //инициализация окружности
     c->center.X = x;
     c->center.Y = y;
     c->R = r;
 }
 
-void CircleRead(Circle* c) {
+void CircleRead(Circle* c) { //ввод окружности
     printf("Введите координаты центра окружности (x, y): ");
     scanf("%d%d", &c->center.X, &c->center.Y);
     printf("Введите радиус окружности (R>0): ");
     scanf("%d", &c->R);
 }
 
-void CircleDisplay(Circle c) {
+void CircleDisplay(Circle c) { //вывод окружности
     printf("Окружность c центром: О(%d,%d) и радиусом R=%d\n", c.center.X, c.center.Y, c.R);
 }
 
-void CirclePrintEquation(Circle c) {
+void CirclePrintEquation(Circle c) { //вывод уравнения окружности
     puts("Уравнение окружности:");
     if (c.center.X > 0) {
         if (c.center.Y > 0)
@@ -94,17 +94,18 @@ void CirclePrintEquation(Circle c) {
     }
 }
 
-double CircleCalcSquare(Circle c) {
+double CircleCalcSquare(Circle c) { //вычисление площади окружности
     double S;
     S = PI * c.R * c.R;
     return S;
 }
 
+//структура треугольник
 typedef struct {
     TPoint A, B, C;
 } Triangle;
 
-void TriangleInit(Triangle* t, int x1, int y1, int x2, int y2, int x3, int y3 ) {
+void TriangleInit(Triangle* t, int x1, int y1, int x2, int y2, int x3, int y3 ) { //инициализация вершин треугольника
     t->A.X = x1;
     t->A.Y = y1;
     t->B.X = x2;
@@ -113,7 +114,7 @@ void TriangleInit(Triangle* t, int x1, int y1, int x2, int y2, int x3, int y3 ) 
     t->C.Y = y3;
 }
 
-void TriangleRead(Triangle* t) {
+void TriangleRead(Triangle* t) { //ввод вершин треугольника
     printf("Введите координаты точки А треугольника (x1, y1): ");
     scanf("%d%d", &t->A.X, &t->A.Y);
     printf("Введите координаты точки B треугольника (x2, y2): ");
@@ -122,19 +123,19 @@ void TriangleRead(Triangle* t) {
     scanf("%d%d", &t->C.X, &t->C.Y);
 }
 
-void TriangleDisplay(Triangle t) {
+void TriangleDisplay(Triangle t) { //вывод треугольника
     printf("Треугольник с вершинами А(%d,%d), B(%d,%d), C(%d,%d)\n", t.A.X, t.A.Y, t.B.X, t.B.Y, t.C.X, t.C.Y);
 
 }
 
-double TriangleCalcSquare(Triangle t) {
+double TriangleCalcSquare(Triangle t) { //вычисление площади треугольника
     int x1 = t.A.X, y1 = t.A.Y, x2 = t.B.X, y2 = t.B.Y, x3 = t.C.X, y3 = t.C.Y;
     double S;
     S = 0.5 * fabs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1));
     return S;
 }
 
-double TriangleCalcPerimeter(Triangle t) {
+double TriangleCalcPerimeter(Triangle t) { //вычисление периметра треугольника
     int x1 = t.A.X, y1 = t.A.Y, x2 = t.B.X, y2 = t.B.Y, x3 = t.C.X, y3 = t.C.Y;
     double AB = sqrt((x2 - x1) ^ (x2 - x1) + (y2 - y1) ^ (y2 - y1));
     double AC = sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1));
@@ -143,16 +144,17 @@ double TriangleCalcPerimeter(Triangle t) {
     return P;
 }
 
+//структура параллелограм
 typedef struct {
     Vector a, b;
 } Parallelogram;
 
-void ParallelogramInit(Parallelogram* pr, int x1, int y1, int x2, int y2) {
+void ParallelogramInit(Parallelogram* pr, int x1, int y1, int x2, int y2) { //инициализация параллелограма
     VectorInit(&pr->a, x1, y1);
     VectorInit(&pr->b, x2, y2);
 }
 
-void ParallelogramRead(Parallelogram* pr) {
+void ParallelogramRead(Parallelogram* pr) { //ввод параллелограма
     int x1, y1, x2, y2;
     printf("Введите координаты первого из векторов, на которых построен параллелограм (x1, y1): ");
     scanf("%d%d", &x1, &y1);
@@ -161,13 +163,13 @@ void ParallelogramRead(Parallelogram* pr) {
     ParallelogramInit(pr, x1, y1, x2, y2);
 }
 
-void ParallelogramDisplay(Parallelogram pr) {
+void ParallelogramDisplay(Parallelogram pr) { //вывод параллелограма
     puts("Параллелограм, построенный на векторах a и b:");
     VectorDisplay(pr.a);
     VectorDisplay(pr.b);
 }
 
-double ParallelogramCalcSquare(Parallelogram pr) {
+double ParallelogramCalcSquare(Parallelogram pr) { //вычисление площади параллелограма
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = VectCalcLen(pr.a);
     len_b = VectCalcLen(pr.b);
@@ -232,7 +234,6 @@ int main()
     printf("\nПлощадь параллелограма S=%g", ParallelogramCalcSquare(pr));
 
     cin.get();
-
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
