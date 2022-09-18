@@ -146,7 +146,7 @@ void Circle::PrintEquation() {
     int x = this->Center.GetX();
     int y = this->Center.GetY();
     int r = this->R;
-    cout << "Уравнение окружности:" << endl;
+    cout << "Уравнение окружности:";
     if (x > 0) {
         if (y > 0)
             printf("(x-%d)^2+(y-%d)^2=%d\n", x, y, r * r);
@@ -309,6 +309,77 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
+    cout << "Тест класса вектор:" << endl;
+    Vector* V1 = new Vector;
+    Vector* V2 = new Vector(4, -3);
+    cout << "\nКонструктор без параметров и с параметрами:" << endl;
+    V1->Display();
+    V2->Display();
+    cout << "\nВвод вектора V1 c клавиатуры:" << endl;
+    V1->Read();
+    V1->Display(); 
+    cout << "\nВвод вектора V2 c клавиатуры:" << endl;
+    V2->Read();
+    V2->Display();
+    cout << "\nТест методов:" << endl;
+    cout << "Модуль вектора |V1|= " << V1->CalcVectLen() << endl;
+    cout << "Модуль вектора |V2|= " << V2->CalcVectLen() << endl;
+    cout << "Скалярное произведение (V1, V2)=" << V1->CalcScalarProd(V2) << endl;
+    delete V1, V2;
+
+
+    cout << "\n\nТест класса окружность:" << endl;
+    Circle* circles = new Circle[5];
+    cout << "\nИнициализация динамического массива окружностей:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].Init(i * 2, i - 3, i * i+1);
+        circles[i].Display();
+    }
+    cout << "\nВвод данных динамического массива окружностей:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].Read();
+    }
+    cout << "\nУравнения окружностей динамического массива:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].PrintEquation();
+    }
+    cout << "\nПлощади окружностей динамического массива:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << "Площадь круга " << i+1 << " S=" << circles[i].CalcSquare() << endl;
+    }
+    delete[] circles;
+
+
+    cout << "\n\nТест класса треугольник:" << endl;
+    Triangle tr(0, 2, 3, -1, -3, 1);
+    cout << "\nКонструктор с параметрами:" << endl;
+    tr.Display();
+    cout << "\nВвод координат вершин треугольника:" << endl;
+    tr.Read();
+    cout << "\nТест методов:" << endl;
+    cout << "Площадь треугольника S=" << tr.CalcSquare() << endl;;
+    cout << "Периметр треугольника P=" << tr.CalcPerimeter() << endl;
+
+
+    cout << "\n\nТест класса параллелограм:" << endl;
+    Parallelogram* prgrams[3];
+    for (int i = 0; i < 3; i++)
+        prgrams[i] = new Parallelogram;
+    cout << "\nВвод координат векторов, на которых построен параллелограм:" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << "Параллелограм " << i+1 << ":" << endl;
+        (*prgrams[i]).Read();
+    }
+    cout << "\nВывод параллелограмов массива:" << endl;
+    for (int i = 0; i < 3; i++)
+        (*prgrams[i]).Display();
+    cout << "\nПлощади параллелограмов массива:" << endl;
+    for (int i = 0; i < 3; i++)
+        cout << "Площадь параллелограма " << i + 1 << " S=" << (*prgrams[i]).CalcSquare() << endl;;
+    for (int i = 0; i < 3; i++)
+        delete prgrams[i];
+
+    cin.get();
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
