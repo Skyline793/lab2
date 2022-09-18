@@ -152,7 +152,7 @@ void ParallelogramInit(Parallelogram* pr, int x1, int y1, int x2, int y2) {
     VectorInit(&pr->b, x2, y2);
 }
 
-void ReadParallelogram(Parallelogram* pr) {
+void ParallelogramRead(Parallelogram* pr) {
     int x1, y1, x2, y2;
     printf("Введите координаты первого из векторов, на которых построен параллелограм (x1, y1): ");
     scanf("%d%d", &x1, &y1);
@@ -181,8 +181,58 @@ double ParallelogramCalcSquare(Parallelogram pr) {
 int main()
 {
     SetConsoleCP(1251);
-    SetConsoleOutputCP(1251); 
+    SetConsoleOutputCP(1251);
+    puts("Тест структуры вектор:");
+    Vector* V1, * V2;
+    V1 = (Vector*)calloc(1, sizeof(Vector));
+    V2 = (Vector*)calloc(1, sizeof(Vector));
+    puts("Ввод координат векторов:");
+    VectorRead(V1);
+    VectorRead(V2);
+    puts("\nВывод координат векторов:");
+    VectorDisplay(*V1);
+    VectorDisplay(*V2);
+    printf("\nМодуль вектора |V1|=%g\nМодуль вектора |V2|=%g\n", VectCalcLen(*V1), VectCalcLen(*V2));
+    printf("Скалярное произведение (V1, V2)=%g\n", CalcScalarProd(*V1, *V2));
+    free(V1);
+    free(V2);
+
+    puts("\n\nТест структуры окружность:");
+    Circle krug;
+    puts("\nИнициализация окружности:");
+    CircleInit(&krug, 0, 0, 2);
+    CircleDisplay(krug);
+    puts("\nВвод данных окружности:");
+    CircleRead(&krug);
+    CircleDisplay(krug);
+    puts("\nВывод уравнения окружности:");
+    CirclePrintEquation(krug);
+    printf("\nПлощадь круга S=%g\n", CircleCalcSquare(krug));
+
+    puts("\n\nТест структуры треугольник:");
+    Triangle* tr;
+    tr = (Triangle*)calloc(1, sizeof(Triangle));
+    puts("\nИнициализация треугольника:");
+    TriangleInit(tr, 3, 4, 0, -2, -1, 6);
+    TriangleDisplay(*tr);
+    puts("\nВвод координат вершин треугольника:");
+    TriangleRead(tr);
+    TriangleDisplay(*tr);
+    printf("\nПлощадь треугольника S=%g\nПериметр треугольникаP=%g", TriangleCalcSquare(*tr), TriangleCalcPerimeter(*tr));
+    free(tr);
   
+    puts("\n\nТест структуры параллелограм:");
+    Parallelogram pr;
+    puts("\nИнициализация параллелограма:");
+    ParallelogramInit(&pr, 1, 4, 5, -3);
+    ParallelogramDisplay(pr);
+    puts("\nВвод координат векторов, на которых построен параллелограм:");
+    ParallelogramRead(&pr);
+    ParallelogramDisplay(pr);
+    printf("\nПлощадь параллелограма S=%g", ParallelogramCalcSquare(pr));
+
+    cin.get();
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
