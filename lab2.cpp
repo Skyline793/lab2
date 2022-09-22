@@ -144,32 +144,32 @@ double TriangleCalcPerimeter(Triangle t) { //вычисление перимет
     return P;
 }
 
-//структура параллелограм
+//структура параллелограмм
 typedef struct {
     Vector a, b;
 } Parallelogram;
 
-void ParallelogramInit(Parallelogram* pr, int x1, int y1, int x2, int y2) { //инициализация параллелограма
+void ParallelogramInit(Parallelogram* pr, int x1, int y1, int x2, int y2) { //инициализация параллелограмма
     VectorInit(&pr->a, x1, y1);
     VectorInit(&pr->b, x2, y2);
 }
 
-void ParallelogramRead(Parallelogram* pr) { //ввод параллелограма
+void ParallelogramRead(Parallelogram* pr) { //ввод параллелограмма
     int x1, y1, x2, y2;
-    printf("Введите координаты первого из векторов, на которых построен параллелограм (x1, y1): ");
+    printf("Введите координаты первого из векторов, на которых построен параллелограмм (x1, y1): ");
     scanf("%d%d", &x1, &y1);
-    printf("Введите координаты второго из векторов, на которых построен параллелограм (x1, y1): ");
+    printf("Введите координаты второго из векторов, на которых построен параллелограмм (x1, y1): ");
     scanf("%d%d", &x2, &y2);
     ParallelogramInit(pr, x1, y1, x2, y2);
 }
 
-void ParallelogramDisplay(Parallelogram pr) { //вывод параллелограма
-    puts("Параллелограм, построенный на векторах a и b:");
+void ParallelogramDisplay(Parallelogram pr) { //вывод параллелограмма
+    puts("параллелограмм, построенный на векторах a и b:");
     VectorDisplay(pr.a);
     VectorDisplay(pr.b);
 }
 
-double ParallelogramCalcSquare(Parallelogram pr) { //вычисление площади параллелограма
+double ParallelogramCalcSquare(Parallelogram pr) { //вычисление площади параллелограмма
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = VectCalcLen(pr.a);
     len_b = VectCalcLen(pr.b);
@@ -220,18 +220,18 @@ int main()
     puts("\nВвод координат вершин треугольника:");
     TriangleRead(tr);
     TriangleDisplay(*tr);
-    printf("\nПлощадь треугольника S=%g\nПериметр треугольникаP=%g", TriangleCalcSquare(*tr), TriangleCalcPerimeter(*tr));
+    printf("\nПлощадь треугольника S=%g\nПериметр треугольника P=%g", TriangleCalcSquare(*tr), TriangleCalcPerimeter(*tr));
     free(tr);
   
-    puts("\n\nТест структуры параллелограм:");
+    puts("\n\nТест структуры параллелограмм:");
     Parallelogram pr;
-    puts("\nИнициализация параллелограма:");
+    puts("\nИнициализация параллелограмма:");
     ParallelogramInit(&pr, 1, 4, 5, -3);
     ParallelogramDisplay(pr);
-    puts("\nВвод координат векторов, на которых построен параллелограм:");
+    puts("\nВвод координат векторов, на которых построен параллелограмм:");
     ParallelogramRead(&pr);
     ParallelogramDisplay(pr);
-    printf("\nПлощадь параллелограма S=%g", ParallelogramCalcSquare(pr));
+    printf("\nПлощадь параллелограмма S=%g", ParallelogramCalcSquare(pr));
 
     cin.get();
 }
