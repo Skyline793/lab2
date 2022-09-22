@@ -314,55 +314,55 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-    //cout << "Тест класса вектор:" << endl;
-    //Vector* V1 = new Vector; //динамический объект
-    //Vector* V2 = new Vector(4, -3); //динамический объект
-    //cout << "\nКонструктор без параметров и с параметрами:" << endl;
-    //V1->Display();
-    //V2->Display();
-    //cout << "\nВвод вектора V1 c клавиатуры:" << endl;
-    //V1->Read();
-    //V1->Display(); 
-    //cout << "\nВвод вектора V2 c клавиатуры:" << endl;
-    //V2->Read();
-    //V2->Display();
-    //cout << "\nТест методов:" << endl;
-    //cout << "Модуль вектора |V1|= " << V1->CalcVectLen() << endl;
-    //cout << "Модуль вектора |V2|= " << V2->CalcVectLen() << endl;
-    //cout << "Скалярное произведение (V1, V2)=" << V1->CalcScalarProd(V2) << endl;
-    //delete V1, V2;
+    cout << "Тест класса вектор:" << endl;
+    Vector* V1 = new Vector; //динамический объект
+    Vector* V2 = new Vector(4, -3); //динамический объект
+    cout << "\nКонструктор без параметров и с параметрами:" << endl;
+    V1->Display();
+    V2->Display();
+    cout << "\nВвод вектора V1 c клавиатуры:" << endl;
+    V1->Read();
+    V1->Display(); 
+    cout << "\nВвод вектора V2 c клавиатуры:" << endl;
+    V2->Read();
+    V2->Display();
+    cout << "\nТест методов:" << endl;
+    cout << "Модуль вектора |V1|= " << V1->CalcVectLen() << endl;
+    cout << "Модуль вектора |V2|= " << V2->CalcVectLen() << endl;
+    cout << "Скалярное произведение (V1, V2)=" << V1->CalcScalarProd(V2) << endl;
+    delete V1, V2;
 
-    //cout << "\n\nТест класса окружность:" << endl;
-    //Circle* circles = new Circle[5]; //динамический массив
-    //cout << "\nИнициализация динамического массива окружностей:" << endl;
-    //for (int i = 0; i < 5; i++) {
-    //    circles[i].Init(i * 2, i - 3, i * i+1);
-    //    circles[i].Display();
-    //}
-    //cout << "\nВвод данных динамического массива окружностей:" << endl;
-    //for (int i = 0; i < 5; i++) {
-    //    circles[i].Read();
-    //}
-    //cout << "\nУравнения окружностей динамического массива:" << endl;
-    //for (int i = 0; i < 5; i++) {
-    //    circles[i].PrintEquation();
-    //}
-    //cout << "\nПлощади окружностей динамического массива:" << endl;
-    //for (int i = 0; i < 5; i++) {
-    //    cout << "Площадь круга " << i+1 << " S=" << circles[i].CalcSquare() << endl;
-    //}
-    //delete[] circles;
+    cout << "\n\nТест класса окружность:" << endl;
+    Circle* circles = new Circle[5]; //динамический массив
+    cout << "\nИнициализация динамического массива окружностей:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].Init(i * 2, i - 3, i * i+1);
+        circles[i].Display();
+    }
+    cout << "\nВвод данных динамического массива окружностей:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].Read();
+    }
+    cout << "\nУравнения окружностей динамического массива:" << endl;
+    for (int i = 0; i < 5; i++) {
+        circles[i].PrintEquation();
+    }
+    cout << "\nПлощади окружностей динамического массива:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << "Площадь круга " << i+1 << " S=" << circles[i].CalcSquare() << endl;
+    }
+    delete[] circles;
 
 
-    //cout << "\n\nТест класса треугольник:" << endl;
-    //Triangle tr(0, 2, 3, -1, -3, 1); //статический объект
-    //cout << "\nКонструктор с параметрами:" << endl;
-    //tr.Display();
-    //cout << "\nВвод координат вершин треугольника:" << endl;
-    //tr.Read();
-    //cout << "\nТест методов:" << endl;
-    //cout << "Площадь треугольника S=" << tr.CalcSquare() << endl;;
-    //cout << "Периметр треугольника P=" << tr.CalcPerimeter() << endl;
+    cout << "\n\nТест класса треугольник:" << endl;
+    Triangle tr(0, 2, 3, -1, -3, 1); //статический объект
+    cout << "\nКонструктор с параметрами:" << endl;
+    tr.Display();
+    cout << "\nВвод координат вершин треугольника:" << endl;
+    tr.Read();
+    cout << "\nТест методов:" << endl;
+    cout << "Площадь треугольника S=" << tr.CalcSquare() << endl;;
+    cout << "Периметр треугольника P=" << tr.CalcPerimeter() << endl;
 
 
     cout << "\n\nТест класса параллелограмм:" << endl;
