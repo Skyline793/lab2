@@ -2,41 +2,40 @@
 #include <iostream>
 using namespace std;
 
-Vector::Vector() :
-    coord(0, 0)
+Vector::Vector() //конструктор без параметров
 {
 }
 
-Vector::Vector(int x, int y):
+Vector::Vector(int x, int y): //конструктор с параметрами
     coord(x, y)
 {
 }
 
-void Vector::Init(int x, int y) {
+void Vector::Init(int x, int y) { //метод инициализации
     this->coord = Point(x, y);
 }
 
-void Vector::Read() {
+void Vector::Read() { //метод вывода
     int x, y;
     cout << "Введите координаты вектора (x, y): ";
     cin >> x >> y;
     this->coord = Point(x, y);
 }
 
-void Vector::Display() {
+void Vector::Display() { //метод ввода
     cout << "Вектор с координатами: ";
     this->coord.Display();
     cout << endl;
 }
 
-double Vector::CalcVectLen() {
+double Vector::CalcVectLen() { //метод вычисления длины вектора
     int x = this->coord.GetX(), y = this->coord.GetY();
     double length;
     length = sqrt(x * x + y * y);
     return length;
 }
 
-double Vector::CalcScalarProd(Vector* v2) {
+double Vector::CalcScalarProd(Vector* v2) { //метод вычисления скалярного произведения векторов
     int x1 = this->coord.GetX();
     int y1 = this->coord.GetY();
     int x2 = v2->coord.GetX();

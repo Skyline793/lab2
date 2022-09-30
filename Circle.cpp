@@ -3,24 +3,23 @@
 #define PI 3.14159265335
 using namespace std;
 
-Circle::Circle():
-    Center(0,0)
+Circle::Circle() //конструктор без параметров
 {
     this->R = 0;
 }
 
-Circle::Circle(int x, int y, int r):
+Circle::Circle(int x, int y, int r): //конструктор с параметрами
     Center(x, y)
 {
     this->R = r;
 }
 
-void Circle::Init(int x, int y, int r) {
+void Circle::Init(int x, int y, int r) { //метод инициализации
     this->Center = Point(x, y);
     this->R = r;
 }
 
-void Circle::Read() {
+void Circle::Read() { //метод ввода
     int x, y, r;
     cout << "Введите координаты центра окружности (x, y): ";
     cin >> x >> y;
@@ -29,13 +28,13 @@ void Circle::Read() {
     this->Init(x, y, r);
 }
 
-void Circle::Display() {
+void Circle::Display() { //метод вывода
     cout << "Окружность с центром в точке О";
     this->Center.Display();
     cout << " и радиусом R=" << this->R << endl;
 }
 
-void Circle::PrintEquation() {
+void Circle::PrintEquation() { //метод вывода уравнения окружности
     int x = this->Center.GetX();
     int y = this->Center.GetY();
     int r = this->R;
@@ -66,7 +65,7 @@ void Circle::PrintEquation() {
     }
 }
 
-double Circle::CalcSquare() {
+double Circle::CalcSquare() { //метод вычисления площади круга
     double S;
     S = PI * this->R * this->R;
     return S;

@@ -2,22 +2,21 @@
 #include <iostream>
 using namespace std;
 
-Parallelogram::Parallelogram():
-    a(0,0), b(0,0)
+Parallelogram::Parallelogram() //конструктор без параметров
 {
-};
+}
 
-Parallelogram::Parallelogram(int x1, int y1, int x2, int y2):
+Parallelogram::Parallelogram(int x1, int y1, int x2, int y2): //конструктор с параметрами
     a(x1, y1), b(x2, y2)
 {
 }
 
-void Parallelogram::Init(int x1, int y1, int x2, int y2) {
+void Parallelogram::Init(int x1, int y1, int x2, int y2) { //метод инициализации
     this->a = Vector(x1, y1);
     this->b = Vector(x2, y2);
 }
 
-void Parallelogram::Read() {
+void Parallelogram::Read() { //метод ввода
     int x1, y1, x2, y2;
     cout << "Введите координаты первого из векторов, на которых построен параллелограмм (x1, y1): ";
     cin >> x1 >> y1;
@@ -27,13 +26,13 @@ void Parallelogram::Read() {
     this->b = Vector(x2, y2);
 }
 
-void Parallelogram::Display() {
+void Parallelogram::Display() { //метод вывода
     cout << "параллелограмм, построенный на векторах a и b:" << endl;
     this->a.Display();
     this->b.Display();
 }
 
-double Parallelogram::CalcSquare() {
+double Parallelogram::CalcSquare() { //метод вычисления площади
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
