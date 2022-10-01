@@ -54,7 +54,7 @@ double Triangle::CalcPerimeter() { //метод вычисления периметра
     int x1 = this->A.GetX(), y1 = this->A.GetY();
     int x2 = this->B.GetX(), y2 = this->B.GetY();
     int x3 = this->C.GetX(), y3 = this->C.GetY();
-    double AB = sqrt((x2 - x1) ^ (x2 - x1) + (y2 - y1) ^ (y2 - y1));
+    double AB = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
     double AC = sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1));
     double BC = sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));
     double P = AB + AC + BC;
