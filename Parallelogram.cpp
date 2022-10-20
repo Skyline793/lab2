@@ -37,7 +37,10 @@ double Parallelogram::CalcSquare() { //метод вычисления площади
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
     prod = a.CalcScalarProd(b);
-    cosinus = prod / (len_a * len_b);
+    if (len_a == 0 || len_b == 0)
+        cosinus = 0;
+    else
+        cosinus = prod / (len_a * len_b);
     sinus = sqrt(1 - cosinus * cosinus);
     S = len_a * len_b * sinus;
     return S;
@@ -48,7 +51,10 @@ void Parallelogram::CalcSquare(double* rez) { //метод вычисления площади с возвр
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
     prod = a.CalcScalarProd(b);
-    cosinus = prod / (len_a * len_b);
+    if (len_a == 0 || len_b == 0)
+        cosinus = 0;
+    else
+        cosinus = prod / (len_a * len_b);
     sinus = sqrt(1 - cosinus * cosinus);
     *rez = len_a * len_b * sinus;
 }
@@ -58,7 +64,10 @@ void Parallelogram::CalcSquare(double& rez) { //метод вычисления площади с возвр
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
     prod = a.CalcScalarProd(b);
-    cosinus = prod / (len_a * len_b);
+    if (len_a == 0 || len_b == 0)
+        cosinus = 0;
+    else
+        cosinus = prod / (len_a * len_b);
     sinus = sqrt(1 - cosinus * cosinus);
     rez = len_a * len_b * sinus;
 }

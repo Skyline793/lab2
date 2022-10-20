@@ -11,7 +11,6 @@ public:
     Point(); //конструктор без параметров
     Point(int x, int y); //конструктор с параметрами
     Point(int x, int y, string metka); //конструктор с параметрами
-    ~Point(); //деструктор
     void Init(int x, int y); //метод инициализации
     void Read(); //метод ввода
     int GetX(); //метод получения координаты X

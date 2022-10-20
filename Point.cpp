@@ -21,10 +21,6 @@ Point::Point(int X, int Y, string metka) { //конструктор с параметрами
 	counter++;
 }
 
-Point::~Point() //деструктор
-{
-	counter--;
-}
 
 void Point::Init(int X, int Y) { //метод инициализации
     this->X = X;
@@ -34,7 +30,7 @@ void Point::Init(int X, int Y) { //метод инициализации
 void Point::Read() { //метод ввода
 	int x, y;
 	string metka;
-	cout << "¬ведите координаты вектора (x, y): ";
+	cout << "¬ведите координаты точки (x, y): ";
 	cin >> x >> y;
 	cout << "¬ведите идентификатор точки (Enter, чтобы не создавать идентификатор): ";
 	cin.ignore();

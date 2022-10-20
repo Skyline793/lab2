@@ -13,22 +13,86 @@
 
 using namespace std;
 
-int Point::counter = 0;
+int Point::counter = 0; //инициализация счетчика точек
+
 int main()
 {
+	
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-    Triangle tr;
-    tr.Read();
-    Point a(1, 1, "rheu");
-    a.Display();
-    cout << endl;
-    a.Read();
-    a.Display();
-    a.Read();
-    a.Display();
-    cout << Point::GetCount();
+	//тест статических методов
+	cout << "тест статических методов" << endl;
+	double grad = 90, rad = 2 * PI / 3;
+	printf("1) Градусы: %.2f радианы: %.2f\n2) Радианы: %.2f градусы: %.2f\n", grad, Point::PerevodToRadian(grad), rad, Point::PerevodToGradus(rad));
 
+	//тест возвращения параметров через указатель и ссылку
+	cout << "\nтест возвращения параметров через указатель и ссылку" << endl;
+	Vector v; 
+	Triangle tr;
+	double rez1, rez2;
+	v.Read();
+	v.Display();
+	v.CalcVectLen(&rez1);
+	v.CalcVectLen(rez2);
+	cout << "Длина вектора через указатель |v|=" << rez1 << endl << "Длина вектора по ссылке |v|=" << rez2 << endl;
+	tr.Read();
+	tr.Display();
+	tr.CalcPerimeter(&rez1);
+	tr.CalcSquare(rez2);
+	cout << "Периметр треугольника через указатель P=" << rez1 << endl << "Площадь треугольника по ссылке S=" << rez2 << endl;
+	
+	//тест дружественных функций и перегрузки операторов
+	cout << "\nтест дружественных функций и перегрузки операторов" << endl;
+	Vector v1, v2, v3;
+	v1.Read();
+	v1.Display();
+	v2.Read();
+	v2.Display();
+	v3 = v1 + v2;
+	cout << "Сумма векторов v1+v2" << endl;
+	v3.Display();
+	v3 = v1 * 3;
+	cout << "Умножение вектора v1 на число 3 справа" << endl;
+	v3.Display();
+	v3 = 2 * v2;
+	cout << "Умножение вектора v2 на число 2 слева" << endl;
+	v3.Display();
+	
+	cout << endl;
+	Point p1, p2, p3;
+	p1.Read();
+	p1.Display();
+	cout << endl;
+	p2.Read();
+	p2.Display();
+	cout << endl;
+	cout << "Префиксный инкремент точки p1" << endl;
+	p3 = ++p1;
+	p1.Display();
+	cout << endl;
+	p3.Display();
+	cout << endl;
+	cout << "Постфиксный инкремент точки p2" << endl;
+	p3 = p2++;
+	p2.Display();
+	cout << endl;
+	p3.Display();
+	cout << endl;
+	
+	//тест работы со строками
+	cout << "\nтест работы со строками" << endl;
+	Point a(1, 2, "A"), b;
+	a.Display();
+	cout << endl;
+	b.Display();
+	cout << endl;
+	b.Read();
+	b.Display();
+	cout << endl;
+
+	//тест cтатического поля счетчика
+	cout << "\nтест статического поля счетчика" << endl;
+	cout << "Общее количество точек: " << Point::GetCount() << endl;
     cin.get(); cin.get();
 }
 
