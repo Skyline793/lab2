@@ -36,9 +36,29 @@ double Parallelogram::CalcSquare() { //метод вычисления площади
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
-    prod = a.CalcScalarProd(&b);
+    prod = a.CalcScalarProd(b);
     cosinus = prod / (len_a * len_b);
     sinus = sqrt(1 - cosinus * cosinus);
     S = len_a * len_b * sinus;
     return S;
+}
+
+void Parallelogram::CalcSquare(double* rez) {
+    double len_a, len_b, prod, cosinus, sinus;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    prod = a.CalcScalarProd(b);
+    cosinus = prod / (len_a * len_b);
+    sinus = sqrt(1 - cosinus * cosinus);
+    *rez = len_a * len_b * sinus;
+}
+
+void Parallelogram::CalcSquare(double& rez) {
+    double len_a, len_b, prod, cosinus, sinus;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    prod = a.CalcScalarProd(b);
+    cosinus = prod / (len_a * len_b);
+    sinus = sqrt(1 - cosinus * cosinus);
+    rez = len_a * len_b * sinus;
 }

@@ -11,6 +11,10 @@ public:
     void Read(); //метод ввода
     void Display(); //метод вывода
     double CalcSquare(); //метод вычисления площади
+    void CalcSquare(double* rez);
+    void CalcSquare(double& rez);
     double CalcPerimeter(); //метод вычисления периметра
+    void CalcPerimeter(double* rez);
+    void CalcPerimeter(double& rez);
 };
 

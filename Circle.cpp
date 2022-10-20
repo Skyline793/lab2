@@ -5,18 +5,18 @@ using namespace std;
 
 Circle::Circle() //конструктор без параметров
 {
-    this->R = 0;
+    R = 0;
 }
 
-Circle::Circle(int x, int y, int r): //конструктор с параметрами
+Circle::Circle(int x, int y, int R): //конструктор с параметрами
     Center(x, y)
 {
-    this->R = r;
+    this->R = R;
 }
 
-void Circle::Init(int x, int y, int r) { //метод инициализации
+void Circle::Init(int x, int y, int R) { //метод инициализации
     this->Center = Point(x, y);
-    this->R = r;
+    this->R = R;
 }
 
 void Circle::Read() { //метод ввода
@@ -31,7 +31,7 @@ void Circle::Read() { //метод ввода
 void Circle::Display() { //метод вывода
     cout << "Окружность с центром в точке О";
     this->Center.Display();
-    cout << " и радиусом R=" << this->R << endl;
+    cout << " и радиусом R=" << R << endl;
 }
 
 void Circle::PrintEquation() { //метод вывода уравнения окружности
@@ -67,6 +67,14 @@ void Circle::PrintEquation() { //метод вывода уравнения окружности
 
 double Circle::CalcSquare() { //метод вычисления площади круга
     double S;
-    S = PI * this->R * this->R;
+    S = PI * R * R;
     return S;
+}
+
+void Circle::CalcSquare(double* rez) {
+    *rez = PI * R * R;
+}
+
+void Circle::CalcSquare(double& rez) {
+    rez = PI * R * R;
 }

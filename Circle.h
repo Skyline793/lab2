@@ -6,11 +6,13 @@ class Circle {
     int R; //радиус
 public:
     Circle(); //конструктор без параметров
-    Circle(int x, int y, int r); //конструктор с параметрами
-    void Init(int x, int y, int r); //метод инициализации
+    Circle(int x, int y, int R); //конструктор с параметрами
+    void Init(int x, int y, int R); //метод инициализации
     void Display(); //метод вывода
     void Read(); //метод ввода
     void PrintEquation(); //метод вывода уравнения окружности
     double CalcSquare(); //метод вычисления площади круга
+    void CalcSquare(double* rez);
+    void CalcSquare(double& rez);
 };
 

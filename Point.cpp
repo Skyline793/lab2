@@ -54,7 +54,7 @@ void Point::PolarCoords() {
 			f += PI;
 		f = PerevodToGradus(f);
 	}
-	printf("Полярные координаты: r=%.3lf f=%.1lf\n", r, f);
+	printf("Полярные координаты: r=%.3lf f=%.1lf град.\n", r, f);
 }
 
 double Point::PerevodToGradus(double rad)
