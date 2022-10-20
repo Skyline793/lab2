@@ -12,7 +12,7 @@ Vector::Vector(int x, int y): //конструктор с параметрами
 }
 
 void Vector::Init(int x, int y) { //метод инициализации
-    this->coord = Point(x, y);
+    coord = Point(x, y);
 }
 
 void Vector::Read() { //метод вывода
@@ -29,21 +29,21 @@ void Vector::Display() { //метод ввода
 }
 
 double Vector::CalcVectLen() { //метод вычисления длины вектора
-    int x = this->coord.GetX(), y = this->coord.GetY();
+    int x = coord.GetX(), y = coord.GetY();
     double length;
     length = sqrt(x * x + y * y);
     return length;
 }
 
-void Vector::CalcVectLen(double* rez)
+void Vector::CalcVectLen(double* rez) //метод вычисления длины вектора с возвращением параметра через указатель
 {
-    int x = this->coord.GetX(), y = this->coord.GetY();
+    int x = coord.GetX(), y = coord.GetY();
     *rez = sqrt(x * x + y * y);
 }
 
-void Vector::CalcVectLen(double& rez)
+void Vector::CalcVectLen(double& rez) //метод вычисления длины вектора с возвращением параметра по ссылке
 {
-    int x = this->coord.GetX(), y = this->coord.GetY();
+    int x = coord.GetX(), y = coord.GetY();
     rez = sqrt(x * x + y * y);
 }
 
@@ -57,19 +57,19 @@ double Vector::CalcScalarProd(Vector v2) { //метод вычисления скалярного произве
     return prod;
 }
 
-Vector Vector::operator*(int k) {
+Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на число справа
     int x = coord.GetX(), y = coord.GetY();
-    Vector prod = Vector(x * 3, y * 3);
+    Vector prod = Vector(x * k, y * k);
     return prod;
 }
 
-Vector operator* (int k, Vector v) {
+Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева
     int x = v.coord.GetX(), y = v.coord.GetY();
-    Vector prod = Vector(x * 3, y * 3);
+    Vector prod = Vector(x * k, y * k);
     return prod;
 }
 
-Vector operator+ (Vector v1, Vector v2) {
+Vector operator+ (Vector v1, Vector v2) { //дружественный перегруженный оператор сложения векторов
     int x1 = v1.coord.GetX();
     int y1 = v1.coord.GetY();
     int x2 = v2.coord.GetX();

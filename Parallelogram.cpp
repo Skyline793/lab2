@@ -12,8 +12,8 @@ Parallelogram::Parallelogram(int x1, int y1, int x2, int y2): //конструктор с па
 }
 
 void Parallelogram::Init(int x1, int y1, int x2, int y2) { //метод инициализации
-    this->a = Vector(x1, y1);
-    this->b = Vector(x2, y2);
+    a = Vector(x1, y1);
+    b = Vector(x2, y2);
 }
 
 void Parallelogram::Read() { //метод ввода
@@ -22,14 +22,14 @@ void Parallelogram::Read() { //метод ввода
     cin >> x1 >> y1;
     cout << "Введите координаты второго из векторов, на которых построен параллелограмм (x2, y2): ";
     cin >> x2 >> y2;
-    this->a = Vector(x1, y1);
-    this->b = Vector(x2, y2);
+    a = Vector(x1, y1);
+    b = Vector(x2, y2);
 }
 
 void Parallelogram::Display() { //метод вывода
     cout << "параллелограмм, построенный на векторах a и b:" << endl;
-    this->a.Display();
-    this->b.Display();
+    a.Display();
+    b.Display();
 }
 
 double Parallelogram::CalcSquare() { //метод вычисления площади
@@ -43,7 +43,7 @@ double Parallelogram::CalcSquare() { //метод вычисления площади
     return S;
 }
 
-void Parallelogram::CalcSquare(double* rez) {
+void Parallelogram::CalcSquare(double* rez) { //метод вычисления площади с возвращением параметра через указатель
     double len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
@@ -53,7 +53,7 @@ void Parallelogram::CalcSquare(double* rez) {
     *rez = len_a * len_b * sinus;
 }
 
-void Parallelogram::CalcSquare(double& rez) {
+void Parallelogram::CalcSquare(double& rez) { //метод вычисления площади с возвращением параметра по ссылке
     double len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();

@@ -1,42 +1,64 @@
 #include "Point.h"
 #include <iostream>
 #define PI 3.14159265335
-using std::cout;
+using namespace std;
 
 Point::Point() { //конструктор без параметров
     X = Y = 0;
 	counter++;
 }
 
-Point::Point(int x, int y) { //конструктор с параметрами
-	this->X = x;
-	this->Y = y;
+Point::Point(int X, int Y) { //конструктор с параметрами
+	this->X = X;
+	this->Y = Y;
 	counter++;
 }
 
-Point::~Point()
+Point::Point(int X, int Y, string metka) { //конструктор с параметрами
+	this->X = X;
+	this->Y = Y;
+	this->metka = metka;
+	counter++;
+}
+
+Point::~Point() //деструктор
 {
 	counter--;
 }
 
-void Point::Init(int x, int y) { //метод инициализации
-    this->X = x;
-    this->Y = y;
+void Point::Init(int X, int Y) { //метод инициализации
+    this->X = X;
+    this->Y = Y;
+}
+
+void Point::Read() { //метод ввода
+	int x, y;
+	string metka;
+	cout << "Введите координаты вектора (x, y): ";
+	cin >> x >> y;
+	cout << "Введите идентификатор точки (Enter, чтобы не создавать идентификатор): ";
+	cin.ignore();
+	getline(cin, metka);
+	*this = Point(x, y, metka);
 }
 
 int Point::GetX() { //метод получения координаты X
-    return this->X;
+    return X;
 }
 
 int Point::GetY() { //метод получения координаты Y
-    return this->Y;
+    return Y;
 }
 
 void Point::Display() { //Метод вывода координат
-    cout << "(" << X << "," << Y << ")";
+	if(metka.empty())
+		cout << "(" << X << "," << Y << ")";
+	else
+		cout << metka << "(" << X << "," << Y << ")";
+
 }
 
-void Point::PolarCoords() {
+void Point::PolarCoords() { //метод перевода в полярные координаты
 	double r, f;
 	r = sqrt(X * X + Y * Y);
 	if (X == 0) {
@@ -57,31 +79,31 @@ void Point::PolarCoords() {
 	printf("Полярные координаты: r=%.3lf f=%.1lf град.\n", r, f);
 }
 
-double Point::PerevodToGradus(double rad)
+double Point::PerevodToGradus(double rad) //статический метод перевода радиан в градусы
 {
 	double grad = rad * 180 / PI;
 	return grad;
 }
 
-double Point::PerevodToRadian(double grad)
+double Point::PerevodToRadian(double grad) //статический метод перевода градусов в радианы
 {
 	double rad = grad * PI / 180;
 	return rad;
 }
 
-int Point::GetCount()
+int Point::GetCount() //статический метод получения счетчика
 {
 	return counter;
 }
 
-Point& Point::operator++()
+Point& Point::operator++() //перегруженный оператор префиксного инкремента
 {
 	this->X++;
 	this->Y++;
 	return *this;
 }
 
-Point Point::operator++(int)
+Point Point::operator++(int) //перегруженный оператор постфиксного инкремента
 {
 	Point tmp = *this;
 	++(*this);

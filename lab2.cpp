@@ -18,15 +18,15 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-    Vector v1(1, 3), v2(2, 2), v3;
-    v3 = v1 * 3;
-    v3.Display();
-    double rez;
-    cout << v1.CalcVectLen() << endl;
-    v1.CalcVectLen(&rez);
-    cout << rez << endl;
-    v1.CalcVectLen(rez);
-    cout << rez << endl;
+    Triangle tr;
+    tr.Read();
+    Point a(1, 1, "rheu");
+    a.Display();
+    cout << endl;
+    a.Read();
+    a.Display();
+    a.Read();
+    a.Display();
     cout << Point::GetCount();
 
     cin.get(); cin.get();

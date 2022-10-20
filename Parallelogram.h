@@ -11,7 +11,7 @@ public:
     void Read(); //метод ввода
     void Display(); //метод вывода
     double CalcSquare(); //метод вычисления площади 
-    void CalcSquare(double* rez);
-    void CalcSquare(double& rez);
+    void CalcSquare(double* rez); //метод вычисления площади с возвращением параметра через указатель
+    void CalcSquare(double& rez); //метод вычисления площади с возвращением параметра по ссылке
 };
 

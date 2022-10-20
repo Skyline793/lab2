@@ -30,13 +30,13 @@ void Circle::Read() { //метод ввода
 
 void Circle::Display() { //метод вывода
     cout << "Окружность с центром в точке О";
-    this->Center.Display();
+    Center.Display();
     cout << " и радиусом R=" << R << endl;
 }
 
 void Circle::PrintEquation() { //метод вывода уравнения окружности
-    int x = this->Center.GetX();
-    int y = this->Center.GetY();
+    int x = Center.GetX();
+    int y = Center.GetY();
     int r = this->R;
     cout << "Уравнение окружности:";
     if (x > 0) {
@@ -71,10 +71,10 @@ double Circle::CalcSquare() { //метод вычисления площади круга
     return S;
 }
 
-void Circle::CalcSquare(double* rez) {
+void Circle::CalcSquare(double* rez) { //метод вычисления площади с возвращением параметра через указатель
     *rez = PI * R * R;
 }
 
-void Circle::CalcSquare(double& rez) {
+void Circle::CalcSquare(double& rez) { //метод вычисления площади с возвращением параметра по ссылке
     rez = PI * R * R;
 }
