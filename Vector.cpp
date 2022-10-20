@@ -35,12 +35,21 @@ double Vector::CalcVectLen() { //метод вычисления длины вектора
     return length;
 }
 
-double Vector::CalcScalarProd(Vector* v2) { //метод вычисления скалярного произведения векторов
+double Vector::CalcScalarProd(Vector v2) { //метод вычисления скалярного произведения векторов
     int x1 = this->coord.GetX();
     int y1 = this->coord.GetY();
-    int x2 = v2->coord.GetX();
-    int y2 = v2->coord.GetY();
+    int x2 = v2.coord.GetX();
+    int y2 = v2.coord.GetY();
     double prod;
     prod = x1 * x2 + y1 * y2;
     return prod;
+}
+
+Vector operator+ (Vector v1, Vector v2) {
+    int x1 = v1.coord.GetX();
+    int y1 = v1.coord.GetY();
+    int x2 = v2.coord.GetX();
+    int y2 = v2.coord.GetY();
+    Vector sum = Vector(x1 + x2, y1 + y2);
+    return sum;
 }

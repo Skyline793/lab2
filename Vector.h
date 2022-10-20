@@ -10,6 +10,7 @@ public:
     void Display(); //метод вывода 
     void Read(); //метод ввода
     double CalcVectLen(); //метод вычисления длины вектора
-    double CalcScalarProd(Vector* v2); //метод вычисления скалярного произведения векторов
+    double CalcScalarProd(Vector v2); //метод вычисления скалярного произведения векторов
+    friend Vector operator+ (Vector v1, Vector v2);
 };
 
