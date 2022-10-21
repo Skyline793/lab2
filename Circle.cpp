@@ -14,22 +14,28 @@ Circle::Circle(int x, int y, int R): //конструктор с параметрами
     this->R = R;
 }
 
+Circle::Circle(int x, int y, int R, string metka): //конструктор с параметрами
+    Center(x, y, metka)
+{
+    this->R = R;
+}
+
 void Circle::Init(int x, int y, int R) { //метод инициализации
     this->Center = Point(x, y);
     this->R = R;
 }
 
 void Circle::Read() { //метод ввода
-    int x, y, r;
-    cout << "Введите координаты центра окружности (x, y): ";
-    cin >> x >> y;
+    int r;
+    cout << "Центр окружности:" << endl;
+    Center.Read();
     cout << "Введите радиус окружности (R>0): ";
     cin >> r;
-    this->Init(x, y, r);
+    R = r;
 }
 
 void Circle::Display() { //метод вывода
-    cout << "Окружность с центром в точке О";
+    cout << "Окружность с центром в точке ";
     Center.Display();
     cout << " и радиусом R=" << R << endl;
 }

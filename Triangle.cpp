@@ -19,24 +19,20 @@ void Triangle::Init(int x1, int y1, int x2, int y2, int x3, int y3) //метод иниц
 }
 
 void Triangle::Read() { //метод ввода
-    int x1, y1, x2, y2, x3, y3;
-    cout << "Введите координаты точки А треугольника (x1, y1): ";
-    cin >> x1 >> y1;
-    cout << "Введите координаты точки B треугольника (x2, y2): ";
-    cin >> x2 >> y2;
-    cout << "Введите координаты точки C треугольника (x3, y3): ";
-    cin >> x3 >> y3;
-    A = Point(x1, y1);
-    B = Point(x2, y2);
-    C = Point(x3, y3);
+    cout << "Первая вершина треугольника:" << endl;
+    A.Read();
+    cout << "Вторая вершина треугольника:" << endl;
+    B.Read();
+    cout << "Третья вершина треугольника:" << endl;
+    C.Read();
 }
 
 void Triangle::Display() { //метод вывода
-    cout << "Треугольник с вершинами А";
+    cout << "Треугольник с вершинами ";
     A.Display();
-    cout << ", B";
+    cout << ", ";
     B.Display();
-    cout << " и C";
+    cout << " и ";
     C.Display();
     cout << endl;
 }

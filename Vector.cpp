@@ -19,12 +19,12 @@ void Vector::Read() { //метод вывода
     int x, y;
     cout << "Введите координаты вектора (x, y): ";
     cin >> x >> y;
-    this->coord = Point(x, y);
+    coord = Point(x, y);
 }
 
 void Vector::Display() { //метод ввода
     cout << "Вектор с координатами: ";
-    this->coord.Display();
+    coord.Display();
     cout << endl;
 }
 

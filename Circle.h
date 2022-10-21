@@ -7,6 +7,7 @@ class Circle {
 public:
     Circle(); //конструктор без параметров
     Circle(int x, int y, int R); //конструктор с параметрами
+    Circle(int x, int y, int R, string metka); //конструктор с параметрами
     void Init(int x, int y, int R); //метод инициализации
     void Display(); //метод вывода
     void Read(); //метод ввода
