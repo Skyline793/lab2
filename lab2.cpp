@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int Point::counter = 0; //инициализация счетчика точек
+
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
 	//тест статических методов
 	cout << "тест статических методов" << endl;
 	double grad = 90, rad = 2 * PI / 3;
-	printf("1) Градусы: %.2f радианы: %.2f\n2) Радианы: %.2f градусы: %.2f\n", grad, Point::PerevodToRadian(grad), rad, Point::PerevodToGradus(rad));
+	printf("1) Градусы: %.2f радианы: %.2f\n2) Радианы: %.2f градусы: %.2f\n", grad, Angle::PerevodToRadian(grad), rad, Angle::PerevodToGradus(rad));
 
 	//тест возвращения параметров через указатель и ссылку
 	cout << "\nтест возвращения параметров через указатель и ссылку" << endl;

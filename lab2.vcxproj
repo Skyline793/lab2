@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="Parallelogram.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Parallelogram.h" />
     <ClInclude Include="Point.h" />

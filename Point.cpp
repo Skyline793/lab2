@@ -3,6 +3,8 @@
 #define PI 3.14159265335
 using namespace std;
 
+int Point::counter = 0; //инициализация счетчика точек
+
 Point::Point() { //конструктор без параметров
     X = Y = 0;
 	counter++;
@@ -59,9 +61,9 @@ void Point::PolarCoords() { //метод перевода в полярные координаты
 	r = sqrt(X * X + Y * Y);
 	if (X == 0) {
 		if (Y > 0)
-			f = PerevodToGradus(PI / 2);
+			f = Angle::PerevodToGradus(PI / 2);
 		if (Y < 0)
-			f = PerevodToGradus(3 * PI / 2);
+			f = Angle::PerevodToGradus(3 * PI / 2);
 		else f = 0;
 	}
 	else {
@@ -70,21 +72,9 @@ void Point::PolarCoords() { //метод перевода в полярные координаты
 			f += 2 * PI;
 		if (X < 0)
 			f += PI;
-		f = PerevodToGradus(f);
+		f = Angle::PerevodToGradus(f);
 	}
 	printf("Полярные координаты: r=%.3lf f=%.1lf град.\n", r, f);
-}
-
-double Point::PerevodToGradus(double rad) //статический метод перевода радиан в градусы
-{
-	double grad = rad * 180 / PI;
-	return grad;
-}
-
-double Point::PerevodToRadian(double grad) //статический метод перевода градусов в радианы
-{
-	double rad = grad * PI / 180;
-	return rad;
 }
 
 int Point::GetCount() //статический метод получения счетчика
