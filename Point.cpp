@@ -23,6 +23,9 @@ Point::Point(int X, int Y, string metka) { //конструктор с параметрами
 	counter++;
 }
 
+Point::~Point() { //деструктор
+	counter--;
+}
 
 void Point::Init(int X, int Y) { //метод инициализации
     this->X = X;
@@ -30,12 +33,24 @@ void Point::Init(int X, int Y) { //метод инициализации
 }
 
 void Point::Read() { //метод ввода
+	bool correct = 0;
 	int x, y;
+	string strX, strY;
 	string metka;
-	cout << "Введите координаты точки (x, y): ";
-	cin >> x >> y;
+	while (!correct) {
+		try {
+			cout << "Введите координаты точки (x, y): ";
+			cin >> strX >> strY;
+			x = stoi(strX);
+			y = stoi(strY);
+			correct = 1;
+		}
+		catch (invalid_argument& e) {
+			cout << "Некорректное значение! Повторите ввод:" << endl;
+		}
+		cin.ignore(1024, '\n');
+	}
 	cout << "Введите идентификатор точки (Enter, чтобы не создавать идентификатор): ";
-	cin.ignore();
 	getline(cin, metka);
 	*this = Point(x, y, metka);
 }
@@ -59,20 +74,22 @@ void Point::Display() { //Метод вывода координат
 void Point::PolarCoords() { //метод перевода в полярные координаты
 	double r, f;
 	r = sqrt(X * X + Y * Y);
-	if (X == 0) {
-		if (Y > 0)
-			f = Angle::PerevodToGradus(PI / 2);
-		if (Y < 0)
-			f = Angle::PerevodToGradus(3 * PI / 2);
-		else f = 0;
-	}
-	else {
-		f = atan((double)Y / X);
+	try {
+		if (X == 0) throw 0;
+		f = atan(Y / X);
 		if (X > 0 && Y < 0)
 			f += 2 * PI;
 		if (X < 0)
 			f += PI;
 		f = Angle::PerevodToGradus(f);
+	}
+	catch (int) {
+		if (Y > 0)
+			f = Angle::PerevodToGradus(PI / 2);
+		if (Y < 0)
+			f = Angle::PerevodToGradus(3 * PI / 2);
+		if (Y == 0)
+			f = 0;
 	}
 	printf("Полярные координаты: r=%.3lf f=%.1lf град.\n", r, f);
 }

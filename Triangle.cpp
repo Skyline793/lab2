@@ -47,6 +47,7 @@ double Triangle::CalcSquare() { //метод вычисления площади
 }
 
 void Triangle::CalcSquare(double* rez) { //метод вычисления площади с возвращением параметра через указатель
+    if (rez == NULL) throw "Нулевой указатель!";
     int x1 = A.GetX(), y1 = A.GetY();
     int x2 = B.GetX(), y2 = B.GetY();
     int x3 = C.GetX(), y3 = C.GetY();
@@ -72,6 +73,7 @@ double Triangle::CalcPerimeter() { //метод вычисления периметра
 }
 
 void Triangle::CalcPerimeter(double* rez) { //метод вычисления периметра с возвращением параметра через указатель
+    if (rez == NULL) throw "Нулевой указатель!";
     int x1 = A.GetX(), y1 = A.GetY();
     int x2 = B.GetX(), y2 = B.GetY();
     int x3 = C.GetX(), y3 = C.GetY();

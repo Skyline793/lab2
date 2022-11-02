@@ -16,9 +16,23 @@ void Vector::Init(int x, int y) { //метод инициализации
 }
 
 void Vector::Read() { //метод вывода
+    bool correct = 0;
     int x, y;
-    cout << "¬ведите координаты вектора (x, y): ";
-    cin >> x >> y;
+    string strX, strY;
+    string metka;
+    while (!correct) {
+        try {
+            cout << "¬ведите координаты вектора (x, y): ";
+            cin >> strX >> strY;
+            x = stoi(strX);
+            y = stoi(strY);
+            correct = 1;
+        }
+        catch (invalid_argument& e) {
+            cout << "Ќекорректное значение! ѕовторите ввод:" << endl;
+        }
+        cin.ignore(1024, '\n');
+    }
     coord = Point(x, y);
 }
 
@@ -37,6 +51,7 @@ double Vector::CalcVectLen() { //метод вычислени€ длины вектора
 
 void Vector::CalcVectLen(double* rez) //метод вычислени€ длины вектора с возвращением параметра через указатель
 {
+    if (rez == NULL) throw "Ќулевой указатель!";
     int x = coord.GetX(), y = coord.GetY();
     *rez = sqrt(x * x + y * y);
 }

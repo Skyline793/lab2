@@ -8,29 +8,47 @@ Circle::Circle() //конструктор без параметров
     R = 0;
 }
 
-Circle::Circle(int x, int y, int R): //конструктор с параметрами
+Circle::Circle(int x, int y, double R): //конструктор с параметрами
     Center(x, y)
 {
     this->R = R;
 }
 
-Circle::Circle(int x, int y, int R, string metka): //конструктор с параметрами
+Circle::Circle(int x, int y, double R, string metka): //конструктор с параметрами
     Center(x, y, metka)
 {
     this->R = R;
 }
 
-void Circle::Init(int x, int y, int R) { //метод инициализации
+void Circle::Init(int x, int y, double R) { //метод инициализации
     this->Center = Point(x, y);
     this->R = R;
 }
 
 void Circle::Read() { //метод ввода
-    int r;
+    bool correct = 0;
+    string strR;
+    double r;
     cout << "÷ентр окружности:" << endl;
     Center.Read();
-    cout << "¬ведите радиус окружности (R>0): ";
-    cin >> r;
+    while (!correct) {
+        try
+        {
+            cout << "¬ведите радиус окружности (R>0): ";
+            cin >> strR;
+            r = stod(strR);
+            if (r < 0) throw 0;
+            correct = 1;
+        }
+        catch (invalid_argument& e) {
+            cout << "Ќекорректное значение. ѕовторите ввод:" << endl;
+        }
+        catch (int)
+        {
+            cout << "–адиус должен быть положительным. ѕовторите ввод:" << endl;
+        }
+        cin.ignore(1024, '\n');
+    }
     R = r;
 }
 
@@ -43,31 +61,31 @@ void Circle::Display() { //метод вывода
 void Circle::PrintEquation() { //метод вывода уравнени€ окружности
     int x = Center.GetX();
     int y = Center.GetY();
-    int r = this->R;
+    double r = R;
     cout << "”равнение окружности:";
     if (x > 0) {
         if (y > 0)
-            printf("(x-%d)^2+(y-%d)^2=%d\n", x, y, r * r);
+            printf("(x-%d)^2+(y-%d)^2=%.2lf\n", x, y, r * r);
         if (y < 0)
-            printf("(x-%d)^2+(y+%d)^2=%d\n", x, -y, r * r);
+            printf("(x-%d)^2+(y+%d)^2=%.2lf\n", x, -y, r * r);
         if (y == 0)
-            printf("(x-%d)^2+y^2=%d\n", x, r * r);
+            printf("(x-%d)^2+y^2=%.2lf\n", x, r * r);
     }
     if (x < 0) {
         if (y > 0)
-            printf("(x+%d)^2+(y-%d)^2=%d\n", -x, y, r * r);
+            printf("(x+%d)^2+(y-%d)^2=%.2lf\n", -x, y, r * r);
         if (y < 0)
-            printf("(x+%d)^2+(y+%d)^2=%d\n", -x, -y, r * r);
+            printf("(x+%d)^2+(y+%d)^2=%.2lf\n", -x, -y, r * r);
         if (y == 0)
-            printf("(x+%d)^2+y^2=%d\n", -x, r * r);
+            printf("(x+%d)^2+y^2=%.2lf\n", -x, r * r);
     }
     if (x == 0) {
         if (y > 0)
-            printf("x^2+(y-%d)^2=%d\n", y, r * r);
+            printf("x^2+(y-%d)^2=%.2lf\n", y, r * r);
         if (y < 0)
-            printf("x^2+(y+%d)^2=%d\n", -y, r * r);
+            printf("x^2+(y+%d)^2=%.2lf\n", -y, r * r);
         if (y == 0)
-            printf("x^2+y^2=%d\n", r * r);
+            printf("x^2+y^2=%.2lf\n", r * r);
     }
 }
 
@@ -78,6 +96,7 @@ double Circle::CalcSquare() { //метод вычислени€ площади круга
 }
 
 void Circle::CalcSquare(double* rez) { //метод вычислени€ площади с возвращением параметра через указатель
+    if (rez == NULL) throw "Ќулевой указатель!";
     *rez = PI * R * R;
 }
 
