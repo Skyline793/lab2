@@ -37,7 +37,7 @@ void Circle::Read() { //метод ввода
             cout << "¬ведите радиус окружности (R>0): ";
             cin >> strR;
             r = stod(strR);
-            if (r < 0) throw 0;
+            if (r <= 0) throw 0;
             correct = 1;
         }
         catch (invalid_argument& e) {
