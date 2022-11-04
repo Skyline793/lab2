@@ -5,8 +5,7 @@ class Vector : public Point {
 public:
     Vector(); //конструктор без параметров
     Vector(int x, int y); //конструктор с параметрами
-    Vector(int x, int y, string metka); //конструктор с параметрами
-    void Display(); //метод вывода 
+    Vector(int x, int y, string metka); //конструктор с параметрами 
     void Read(); //метод ввода
     double CalcVectLen(); //метод вычисления длины вектора
     void CalcVectLen(double* rez); //метод вычисления длины вектора с возвращением параметра через указатель
@@ -16,6 +15,7 @@ public:
     void operator= (Point p); //перегруженный оператор присваивания
     friend Vector operator* (int k, Vector v); //дружественный перегруженный оператор умножения вектора на число слева
     friend Vector operator+ (Vector v1, Vector v2); //дружественный перегруженный оператор сложения векторов
+    friend ostream& operator<< (ostream& out, Vector v); //перегруженный оператор вывода
  
 };
 

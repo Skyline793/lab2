@@ -23,11 +23,10 @@ int main()
 
     Point p(1, 1, "B");
     Vector v(2, 2);
-    p.Display();
-    v.Display();
-    v = p;
-    p.Display();
-    v.Display();
+    Circle c(1, -1, 2.3);
+    Triangle tr(2, 1, 3, 5, 7, 1);
+    Parallelogram pr(2, 3, -2, -3);
+    cout << p << endl << v << c << tr << pr;
     cin.get(); cin.get();
 }
 

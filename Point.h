@@ -1,7 +1,7 @@
 #pragma once
 #include "Angle.h"
 #include <string>
-using std::string;
+using namespace std;
 
 //класс точка
 class Point
@@ -23,10 +23,10 @@ public:
     int GetX(); //метод получения координаты X
     int GetY(); //метод получения координаты Y
     string GetMetka(); //метод получения идентификатора
-    void Display(); //Метод вывода координат
     void PolarCoords(); //метод перевода в полярные координаты
     static int GetCount(); //статический метод получения счетчика
     Point& operator++(); //перегруженный оператор префиксного инкремента
     Point operator++(int); //перегруженный оператор постфиксного инкремента
+    friend ostream& operator<< (ostream &out, Point p); //перегруженный оператор вывода
 };
 

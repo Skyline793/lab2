@@ -18,12 +18,6 @@ void Parallelogram::Read() { //метод ввода
     b.Read();
 }
 
-void Parallelogram::Display() { //метод вывода
-    cout << "параллелограмм, построенный на векторах:" << endl;
-    a.Display();
-    b.Display();
-}
-
 double Parallelogram::CalcSquare() { //метод вычисления площади
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
@@ -68,4 +62,9 @@ void Parallelogram::CalcSquare(double& rez) { //метод вычисления площади с возвр
     }
     sinus = sqrt(1 - cosinus * cosinus);
     rez = len_a * len_b * sinus;
+}
+
+ostream& operator<< (ostream& out, Parallelogram pr) { //перегруженный оператор вывода
+    out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b;
+    return out;
 }

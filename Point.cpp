@@ -74,10 +74,6 @@ string Point::GetMetka() { //метод получения идентификатора
 	return metka;
 }
 
-void Point::Display() { //Метод вывода координат
-	cout << metka << "(" << X << "," << Y << ")";
-}
-
 void Point::PolarCoords() { //метод перевода в полярные координаты
 	double r, f;
 	r = sqrt(X * X + Y * Y);
@@ -118,4 +114,9 @@ Point Point::operator++(int) //перегруженный оператор постфиксного инкремента
 	Point tmp = *this;
 	++(*this);
 	return tmp;
+}
+
+ostream& operator<< (ostream& out, Point p) { //перегруженный оператор вывода
+	out << p.metka << "(" << p.X << "," << p.Y << ")";
+	return out;
 }

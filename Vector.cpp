@@ -38,10 +38,6 @@ void Vector::Read() { //метод вывода
     this->Y = y;
 }
 
-void Vector::Display() { //метод ввода
-    cout << "Вектор " << metka << " с координатами: (" << X << ", " << Y << ")" << endl;
-}
-
 double Vector::CalcVectLen() { //метод вычисления длины вектора
     double length;
     length = sqrt(X * X + Y * Y);
@@ -93,4 +89,9 @@ Vector operator+ (Vector v1, Vector v2) { //дружественный перегруженный оператор
     int y2 = v2.Y;
     Vector sum = Vector(x1 + x2, y1 + y2);
     return sum;
+}
+
+ostream& operator<< (ostream& out, Vector v) { //перегруженный оператор вывода
+    cout << "Вектор " << v.metka << " с координатами: (" << v.X << ", " << v.Y << ")" << endl;
+    return out;
 }

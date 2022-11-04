@@ -21,16 +21,6 @@ void Triangle::Read() { //метод ввода
     C.Read();
 }
 
-void Triangle::Display() { //метод вывода
-    cout << "Треугольник с вершинами ";
-    A.Display();
-    cout << ", ";
-    B.Display();
-    cout << " и ";
-    C.Display();
-    cout << endl;
-}
-
 double Triangle::CalcSquare() { //метод вычисления площади
     int x1 = A.GetX(), y1 = A.GetY();
     int x2 = B.GetX(), y2 = B.GetY();
@@ -85,4 +75,9 @@ void Triangle::CalcPerimeter(double& rez) { //метод вычисления периметра с возвр
     double AC = sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1));
     double BC = sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));
     rez = AB + AC + BC;
+}
+
+ostream& operator<< (ostream& out, Triangle tr) { //перегруженный оператор вывода
+    out << "Треугольник с вершинами" << tr.A << ", " << tr.B << ", " << tr.C << endl;
+    return out;
 }

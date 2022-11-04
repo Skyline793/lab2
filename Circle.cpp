@@ -47,12 +47,6 @@ void Circle::Read() { //метод ввода
     R = r;
 }
 
-void Circle::Display() { //метод вывода
-    cout << "Окружность с центром в точке ";
-    Center.Display();
-    cout << " и радиусом R=" << R << endl;
-}
-
 void Circle::PrintEquation() { //метод вывода уравнения окружности
     int x = Center.GetX();
     int y = Center.GetY();
@@ -97,4 +91,9 @@ void Circle::CalcSquare(double* rez) { //метод вычисления площади с возвращением
 
 void Circle::CalcSquare(double& rez) { //метод вычисления площади с возвращением параметра по ссылке
     rez = PI * R * R;
+}
+
+ostream& operator<< (ostream& out, Circle c) { //перегруженный оператор вывода
+    out << "Окружность с центром в точке " << c.Center << " и радиусом R=" << c.R << endl;
+    return out;
 }

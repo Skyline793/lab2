@@ -8,11 +8,11 @@ public:
     Circle(); //конструктор без параметров
     Circle(int x, int y, double R); //конструктор с параметрами
     Circle(int x, int y, double R, string metka); //конструктор с параметрами
-    void Display(); //метод вывода
     void Read(); //метод ввода
     void PrintEquation(); //метод вывода уравнения окружности
     double CalcSquare(); //метод вычисления площади круга
     void CalcSquare(double* rez); //метод вычисления площади с возвращением параметра через указатель
     void CalcSquare(double& rez); //метод вычисления площади с возвращением параметра по ссылке
+    friend ostream& operator<< (ostream& out, Circle c); //перегруженный оператор вывода
 };
 
