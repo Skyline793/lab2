@@ -20,51 +20,6 @@ int main()
 	
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-    const int N = 2;
-    Point pts[N];
-    cout << "Ввод массива точек" << endl;
-    for (int i = 0; i < N; i++) {
-        pts[i].Read();
-    }
-    cout << "Вывод массива точек" << endl;
-    for (int i = 0; i < N; i++) {
-        pts[i].Display();
-        cout << endl;
-    }
-    cout << "Запись координат точек массива в полярной системе" << endl;
-    for (int i = 0; i < N; i++) {
-        pts[i].PolarCoords();
-    }
-
-    Circle** cs = new Circle*[N];
-    for (int i = 0; i < N; i++)
-        cs[i] = new Circle[2];
-    cout << "Ввод элементов двумерного массива кругов" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++)
-            cs[i][j].Read();
-    }
-    cout << "Вывод элементов двумерного массива кругов" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++)
-            cs[i][j].Display();
-    }
-    cout << "Вычисление площадей элементов двумерного массива кругов" << endl;
-    double* ptr = NULL;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            try {
-                cs[i][j].CalcSquare(ptr);
-                cout << *ptr << endl;
-            }
-            catch (const char* msg) {
-                cout << "Вызвано исключение " << msg << endl;
-            }
-        }
-    }
-    for (int i = 0; i < N; i++)
-        delete[] cs[i];
-    delete[] cs;
     cin.get(); cin.get();
 }
 

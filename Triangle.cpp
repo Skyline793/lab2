@@ -11,12 +11,6 @@ Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3): //конструкто
 {
 }
 
-void Triangle::Init(int x1, int y1, int x2, int y2, int x3, int y3) //метод инициализации
-{
-    A = Point(x1, y1);
-    B = Point(x2, y2);
-    C = Point(x3, y3);
-}
 
 void Triangle::Read() { //метод ввода
     cout << "Первая вершина треугольника:" << endl;

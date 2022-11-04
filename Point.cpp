@@ -27,9 +27,16 @@ Point::~Point() { //деструктор
 	counter--;
 }
 
-void Point::Init(int X, int Y) { //метод инициализации
-    this->X = X;
-    this->Y = Y;
+void Point::SetX(int X) { //метод установки значения X
+	this->X = X;
+}
+
+void Point::SetY(int Y) { //метод установки значения Y
+	this->Y = Y;
+}
+
+void Point::SetMetka(string metka) { //метод установки значения идентификатора
+	this->metka = metka;
 }
 
 void Point::Read() { //метод ввода
@@ -63,12 +70,12 @@ int Point::GetY() { //метод получения координаты Y
     return Y;
 }
 
-void Point::Display() { //Метод вывода координат
-	if(metka.empty())
-		cout << "(" << X << "," << Y << ")";
-	else
-		cout << metka << "(" << X << "," << Y << ")";
+string Point::GetMetka() { //метод получения идентификатора
+	return metka;
+}
 
+void Point::Display() { //Метод вывода координат
+	cout << metka << "(" << X << "," << Y << ")";
 }
 
 void Point::PolarCoords() { //метод перевода в полярные координаты

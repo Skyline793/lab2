@@ -6,13 +6,14 @@ Vector::Vector() //конструктор без параметров
 {
 }
 
-Vector::Vector(int x, int y): //конструктор с параметрами
-    coord(x, y)
+Vector::Vector(int x, int y) : //конструктор с параметрами
+    Point(x, y)
 {
 }
 
-void Vector::Init(int x, int y) { //метод инициализации
-    coord = Point(x, y);
+Vector::Vector(int x, int y, string metka) : //конструктор с параметрами
+    Point(x, y, metka)
+{
 }
 
 void Vector::Read() { //метод вывода
@@ -33,62 +34,57 @@ void Vector::Read() { //метод вывода
         }
         cin.ignore(1024, '\n');
     }
-    coord = Point(x, y);
+    this->X = x;
+    this->Y = y;
 }
 
 void Vector::Display() { //метод ввода
-    cout << "Вектор с координатами: ";
-    coord.Display();
-    cout << endl;
+    cout << "Вектор " << metka << " с координатами : (" << X << ", " << Y << ")" << endl;
 }
 
 double Vector::CalcVectLen() { //метод вычисления длины вектора
-    int x = coord.GetX(), y = coord.GetY();
     double length;
-    length = sqrt(x * x + y * y);
+    length = sqrt(X * X + Y * Y);
     return length;
 }
 
 void Vector::CalcVectLen(double* rez) //метод вычисления длины вектора с возвращением параметра через указатель
 {
     if (rez == NULL) throw "Нулевой указатель!";
-    int x = coord.GetX(), y = coord.GetY();
-    *rez = sqrt(x * x + y * y);
+
+    *rez = sqrt(X * X + Y * Y);
 }
 
 void Vector::CalcVectLen(double& rez) //метод вычисления длины вектора с возвращением параметра по ссылке
 {
-    int x = coord.GetX(), y = coord.GetY();
-    rez = sqrt(x * x + y * y);
+    rez = sqrt(X * X + Y * Y);
 }
 
 double Vector::CalcScalarProd(Vector v2) { //метод вычисления скалярного произведения векторов
-    int x1 = this->coord.GetX();
-    int y1 = this->coord.GetY();
-    int x2 = v2.coord.GetX();
-    int y2 = v2.coord.GetY();
+    int x1 = this->X;
+    int y1 = this->Y;
+    int x2 = v2.X;
+    int y2 = v2.Y;
     double prod;
     prod = x1 * x2 + y1 * y2;
     return prod;
 }
 
 Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на число справа
-    int x = coord.GetX(), y = coord.GetY();
-    Vector prod = Vector(x * k, y * k);
+    Vector prod = Vector(X * k, Y * k);
     return prod;
 }
 
 Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева
-    int x = v.coord.GetX(), y = v.coord.GetY();
-    Vector prod = Vector(x * k, y * k);
+    Vector prod = Vector(v.X * k, v.Y * k);
     return prod;
 }
 
 Vector operator+ (Vector v1, Vector v2) { //дружественный перегруженный оператор сложения векторов
-    int x1 = v1.coord.GetX();
-    int y1 = v1.coord.GetY();
-    int x2 = v2.coord.GetX();
-    int y2 = v2.coord.GetY();
+    int x1 = v1.X;
+    int y1 = v1.Y;
+    int x2 = v2.X;
+    int y2 = v2.Y;
     Vector sum = Vector(x1 + x2, y1 + y2);
     return sum;
 }

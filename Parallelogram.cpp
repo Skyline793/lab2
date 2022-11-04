@@ -11,13 +11,7 @@ Parallelogram::Parallelogram(int x1, int y1, int x2, int y2): //конструктор с па
 {
 }
 
-void Parallelogram::Init(int x1, int y1, int x2, int y2) { //метод инициализации
-    a = Vector(x1, y1);
-    b = Vector(x2, y2);
-}
-
 void Parallelogram::Read() { //метод ввода
-    int x1, y1, x2, y2;
     cout << "Первый из векторов, на которых построен параллелограмм:" << endl;
     a.Read();
     cout << "Второй из векторов, на которых построен параллелограмм: " << endl;

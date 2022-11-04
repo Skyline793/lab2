@@ -20,11 +20,6 @@ Circle::Circle(int x, int y, double R, string metka): //конструктор с параметрам
     this->R = R;
 }
 
-void Circle::Init(int x, int y, double R) { //метод инициализации
-    this->Center = Point(x, y);
-    this->R = R;
-}
-
 void Circle::Read() { //метод ввода
     bool correct = 0;
     string strR;
