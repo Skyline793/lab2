@@ -13,6 +13,7 @@ public:
     void CalcVectLen(double& rez); //метод вычисления длины вектора с возвращением параметра по ссылке
     double CalcScalarProd(Vector v2); //метод вычисления скалярного произведения векторов
     Vector operator* (int k); //перегруженный оператор умножения вектора на число справа
+    void operator= (Point p); //перегруженный оператор присваивания
     friend Vector operator* (int k, Vector v); //дружественный перегруженный оператор умножения вектора на число слева
     friend Vector operator+ (Vector v1, Vector v2); //дружественный перегруженный оператор сложения векторов
  

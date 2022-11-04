@@ -20,6 +20,14 @@ int main()
 	
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
+
+    Point p(1, 1, "B");
+    Vector v(2, 2);
+    p.Display();
+    v.Display();
+    v = p;
+    p.Display();
+    v.Display();
     cin.get(); cin.get();
 }
 

@@ -39,7 +39,7 @@ void Vector::Read() { //метод вывода
 }
 
 void Vector::Display() { //метод ввода
-    cout << "Вектор " << metka << " с координатами : (" << X << ", " << Y << ")" << endl;
+    cout << "Вектор " << metka << " с координатами: (" << X << ", " << Y << ")" << endl;
 }
 
 double Vector::CalcVectLen() { //метод вычисления длины вектора
@@ -73,6 +73,12 @@ double Vector::CalcScalarProd(Vector v2) { //метод вычисления скалярного произве
 Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на число справа
     Vector prod = Vector(X * k, Y * k);
     return prod;
+}
+
+void Vector::operator= (Point p) { //перегруженный оператор присваивания 
+    this->X = p.GetX();
+    this->Y = p.GetY();
+    this->metka = p.GetMetka();
 }
 
 Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева
