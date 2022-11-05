@@ -11,11 +11,39 @@ Parallelogram::Parallelogram(int x1, int y1, int x2, int y2): //конструктор с па
 {
 }
 
+Parallelogram::Parallelogram(int x1, int y1, int x2, int y2, int colorIndex): //конструктор с параметрами
+    a(x1, y1), b(x2, y2)
+{
+    this->colorIndex = colorIndex;
+}
+
 void Parallelogram::Read() { //метод ввода
+    bool correct = 0;
+    string strIndex;
+    int index;
     cout << "Первый из векторов, на которых построен параллелограмм:" << endl;
     a.Read();
     cout << "Второй из векторов, на которых построен параллелограмм: " << endl;
     b.Read();
+    while (!correct) {
+        try
+        {
+            cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
+            cin >> strIndex;
+            index = stoi(strIndex);
+            if (index < 0 || index > 4) throw 0;
+            correct = 1;
+        }
+        catch (invalid_argument& e) {
+            cout << "Некорректное значение. Повторите ввод:" << endl;
+        }
+        catch (int)
+        {
+            cout << "Введите число от 0 до 4!. Повторите ввод:" << endl;
+        }
+        cin.ignore(1024, '\n');
+    }
+    colorIndex = index;
 }
 
 double Parallelogram::CalcSquare() { //метод вычисления площади
@@ -32,7 +60,7 @@ double Parallelogram::CalcSquare() { //метод вычисления площади
 }
 
 void Parallelogram::CalcSquare(double* rez) { //метод вычисления площади с возвращением параметра через указатель
-    if (rez == NULL) throw "Нулевой указатель!";
+    if (rez == NULL) throw exception("Нулевой указатель!");
     double len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();
@@ -64,7 +92,32 @@ void Parallelogram::CalcSquare(double& rez) { //метод вычисления площади с возвр
     rez = len_a * len_b * sinus;
 }
 
+double Parallelogram::CalcPerimeter() //метод вычисления периметра
+{
+    double len_a, len_b, P;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    P = 2 * (len_a + len_b);
+    return P;
+}
+void Parallelogram::CalcPerimeter(double* rez) //метод вычисления периметра с возвращением параметра через указатель
+{
+    if (rez == NULL) throw exception("Нулевой указатель!");
+    double len_a, len_b;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    *rez = 2 * (len_a + len_b);
+}
+void Parallelogram::CalcPerimeter(double& rez) //метод вычисления периметра с возвращением параметра по ссылке
+{
+    double len_a, len_b;
+    len_a = a.CalcVectLen();
+    len_b = b.CalcVectLen();
+    rez = 2 * (len_a + len_b);
+}
+
 ostream& operator<< (ostream& out, Parallelogram pr) { //перегруженный оператор вывода
-    out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b;
+    if (pr.colorIndex < 0 || pr.colorIndex > 4) throw exception("Выбранный индекс цвета вне диапазона!");
+    out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b << "Цвет фигуры: " << Figure::colors[pr.colorIndex];
     return out;
 }

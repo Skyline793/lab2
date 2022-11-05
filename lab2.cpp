@@ -9,6 +9,7 @@
 #include "Circle.h"
 #include "Triangle.h"
 #include "Parallelogram.h"
+#include "Figure.h"
 #define PI 3.14159265335
 
 using namespace std;
@@ -20,13 +21,7 @@ int main()
 	
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251); 
-
-    Point p(1, 1, "B");
-    Vector v(2, 2);
-    Circle c(1, -1, 2.3);
-    Triangle tr(2, 1, 3, 5, 7, 1);
-    Parallelogram pr(2, 3, -2, -3);
-    cout << p << endl << v << c << tr << pr;
+   
     cin.get(); cin.get();
 }
 

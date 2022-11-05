@@ -34,8 +34,9 @@ void Vector::Read() { //метод вывода
         }
         cin.ignore(1024, '\n');
     }
-    this->X = x;
-    this->Y = y;
+    cout << "¬ведите идентификатор вектора (Enter, чтобы не создавать идентификатор): ";
+    getline(cin, metka);
+    *this = Vector(x, y, metka);
 }
 
 double Vector::CalcVectLen() { //метод вычислени€ длины вектора

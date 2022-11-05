@@ -19,7 +19,7 @@ public:
     void SetX(int X); //метод установки значени€ X
     void SetY(int Y); //метод установки значени€ Y
     void SetMetka(string metka); //метод установки значени€ идентификатора
-    void Read(); //метод ввода
+    virtual void Read(); //виртуальный метод ввода
     int GetX(); //метод получени€ координаты X
     int GetY(); //метод получени€ координаты Y
     string GetMetka(); //метод получени€ идентификатора
