@@ -2,8 +2,8 @@
 #include "Point.h"
 #include "Figure.h"
 
-//класс окружность
-class Circle : public Figure {
+//класс окружность, наследуемый от фигуры
+class Circle : public Figure { 
     Point Center; //центр окружности
     double R; //радиус
 public:
@@ -11,6 +11,7 @@ public:
     Circle(int x, int y, double R); //конструктор с параметрами
     Circle(int x, int y, double R, int colorIndex); //конструктор с параметрами
     Circle(int x, int y, double R, string metka, int colorIndex); //конструктор с параметрами
+    void SetR(double R); //метод установки радиуса
     void Read(); //метод ввода
     void PrintEquation(); //метод вывода уравнения окружности
     double CalcSquare(); //метод вычисления площади круга

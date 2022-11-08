@@ -6,11 +6,10 @@ using namespace std;
 //класс точка
 class Point
 {
-protected:
-    string metka; //метка для идентификации точки
-    int X ,Y; //координаты точки
-private:
     static int counter; //счетчик количества точек
+protected:
+    int X ,Y; //координаты точки
+    string metka; //метка для идентификации точки
 public:
     Point(); //конструктор без параметров
     Point(int x, int y); //конструктор с параметрами

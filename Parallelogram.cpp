@@ -14,6 +14,7 @@ Parallelogram::Parallelogram(int x1, int y1, int x2, int y2): //конструктор с па
 Parallelogram::Parallelogram(int x1, int y1, int x2, int y2, int colorIndex): //конструктор с параметрами
     a(x1, y1), b(x2, y2)
 {
+    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
 }
 
@@ -31,19 +32,14 @@ void Parallelogram::Read() { //метод ввода
             cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
             cin >> strIndex;
             index = stoi(strIndex);
-            if (index < 0 || index >= Figure::colors->length()) throw 0;
+            SetColorIndex(index);
             correct = 1;
         }
         catch (invalid_argument& e) {
-            cout << "Некорректное значение. Повторите ввод:" << endl;
-        }
-        catch (int)
-        {
-            cout << "Введите число от 0 до 4!. Повторите ввод:" << endl;
+            cout << e.what() << " Повторите ввод:" << endl;
         }
         cin.ignore(1024, '\n');
     }
-    colorIndex = index;
 }
 
 double Parallelogram::CalcSquare() { //метод вычисления площади
@@ -117,7 +113,6 @@ void Parallelogram::CalcPerimeter(double& rez) //метод вычисления периметра с во
 }
 
 ostream& operator<< (ostream& out, Parallelogram pr) { //перегруженный оператор вывода
-    if (pr.colorIndex < 0 || pr.colorIndex >= Figure::colors->length()) throw exception("Выбранный индекс цвета вне диапазона!");
     out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b << "Цвет фигуры: " << Figure::colors[pr.colorIndex] << endl;
     return out;
 }

@@ -47,7 +47,7 @@ double Vector::CalcVectLen() { //метод вычисления длины вектора
 
 void Vector::CalcVectLen(double* rez) //метод вычисления длины вектора с возвращением параметра через указатель
 {
-    if (rez == NULL) throw "Нулевой указатель!";
+    if (rez == NULL) throw exception("Нулевой указатель!");
 
     *rez = sqrt(X * X + Y * Y);
 }
@@ -75,7 +75,6 @@ Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на 
 void Vector::operator= (Point p) { //перегруженный оператор присваивания 
     this->X = p.GetX();
     this->Y = p.GetY();
-    this->metka = p.GetMetka();
 }
 
 Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева

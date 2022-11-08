@@ -19,24 +19,14 @@ using namespace std;
 
 int main()
 {
-	
+
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     Triangle t1(3, 1, 0, 3, -3, 6), t2(4, 1, 6, 1, -3, -4);
-    Circle c1(3, 2, 3.5), c2(4, 1, 4.4);
+    Circle c1(3, 2, -3.5), c2(4, 1, 4.4);
     Parallelogram p1(3, 1, 5, 2), p2(1, -2, 3, -6);
     Vector v1(1, 3), v2(4, 5);
-    t1.SetColorIndex(4);
-    cout << t1;
-
-    cout << Comparison<Triangle>::CompareSquare(t1, t2);
-    cout << Comparison<Triangle>::ComparePerimeter(t1, t2);
-    cout << Comparison<Circle>::CompareSquare(c1, c2);
-    cout << Comparison<Circle>::ComparePerimeter(c1, c2);
-    cout << Comparison<Parallelogram>::CompareSquare(p1, p2);
-    cout << Comparison<Parallelogram>::ComparePerimeter(p1, p2);
-
-
+    Point tch1, tch2;
 
    
     cin.get(); cin.get();

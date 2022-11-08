@@ -12,12 +12,15 @@ Circle::Circle() //конструктор без параметров
 Circle::Circle(int x, int y, double R): //конструктор с параметрами
     Center(x, y)
 {
+    if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
     this->R = R;
 }
 
 Circle::Circle(int x, int y, double R, int colorIndex): //конструктор с параметрами
     Center(x, y)
 {
+    if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
+    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
     this->R = R;
 }
@@ -25,7 +28,15 @@ Circle::Circle(int x, int y, double R, int colorIndex): //конструктор с параметр
 Circle::Circle(int x, int y, double R, string metka, int colorIndex): //конструктор с параметрами
     Center(x, y, metka)
 {
+    if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
+    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
+    this->R = R;
+}
+
+void Circle::SetR(double R) //метод установки радиуса
+{
+    if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
     this->R = R;
 }
 
@@ -42,15 +53,11 @@ void Circle::Read() { //метод ввода
             cout << "Введите радиус окружности (R>0): ";
             cin >> strR;
             r = stod(strR);
-            if (r <= 0) throw 0;
+            SetR(r);
             correct = 1;
         }
         catch (invalid_argument& e) {
-            cout << "Некорректное значение. Повторите ввод:" << endl;
-        }
-        catch (int)
-        {
-            cout << "Радиус должен быть положительным. Повторите ввод:" << endl;
+            cout << e.what() << " Повторите ввод : " << endl;
         }
         cin.ignore(1024, '\n');
     }
@@ -61,20 +68,14 @@ void Circle::Read() { //метод ввода
             cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
             cin >> strIndex;
             index = stoi(strIndex);
-            if (index < 0 || index >= Figure::colors->length()) throw 0;
+            SetColorIndex(index);
             correct = 1;
         }
         catch (invalid_argument& e) {
-            cout << "Некорректное значение. Повторите ввод:" << endl;
-        }
-        catch (int)
-        {
-            cout << "Введите число от 0 до 4!. Повторите ввод:" << endl;
+            cout << e.what() << " Повторите ввод:" << endl;
         }
         cin.ignore(1024, '\n');
     }
-    R = r;
-    colorIndex = index;
 }
 
 void Circle::PrintEquation() { //метод вывода уравнения окружности
@@ -139,7 +140,6 @@ void Circle::CalcPerimeter(double& rez) { //метод вычисления периметра с возвращ
 }
 
 ostream& operator<< (ostream& out, Circle c) { //перегруженный оператор вывода
-    if (c.colorIndex < 0 || c.colorIndex >= Figure::colors->length()) throw exception("Выбранный индекс цвета вне диапазона!");
     out << "Окружность с центром в точке " << c.Center << " и радиусом R=" << c.R << ". Цвет фигуры: " << Figure::colors[c.colorIndex] << endl;
     return out;
 }
