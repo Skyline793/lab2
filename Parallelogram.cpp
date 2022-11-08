@@ -17,7 +17,6 @@ void Parallelogram::Init(int x1, int y1, int x2, int y2) { //метод инициализации
 }
 
 void Parallelogram::Read() { //метод ввода
-    int x1, y1, x2, y2;
     cout << "ѕервый из векторов, на которых построен параллелограмм:" << endl;
     a.Read();
     cout << "¬торой из векторов, на которых построен параллелограмм: " << endl;
@@ -44,7 +43,7 @@ double Parallelogram::CalcSquare() { //метод вычислени€ площади
 }
 
 void Parallelogram::CalcSquare(double* rez) { //метод вычислени€ площади с возвращением параметра через указатель
-    if (rez == NULL) throw "Ќулевой указатель!";
+    if (rez == NULL) throw exception("Ќулевой указатель!");
     double len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();
     len_b = b.CalcVectLen();

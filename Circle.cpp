@@ -96,7 +96,7 @@ double Circle::CalcSquare() { //метод вычисления площади круга
 }
 
 void Circle::CalcSquare(double* rez) { //метод вычисления площади с возвращением параметра через указатель
-    if (rez == NULL) throw "Нулевой указатель!";
+    if (rez == NULL) throw exception("Нулевой указатель!");
     *rez = PI * R * R;
 }
 

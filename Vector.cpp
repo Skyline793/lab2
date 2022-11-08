@@ -51,7 +51,7 @@ double Vector::CalcVectLen() { //метод вычисления длины вектора
 
 void Vector::CalcVectLen(double* rez) //метод вычисления длины вектора с возвращением параметра через указатель
 {
-    if (rez == NULL) throw "Нулевой указатель!";
+    if (rez == NULL) throw exception("Нулевой указатель!");
     int x = coord.GetX(), y = coord.GetY();
     *rez = sqrt(x * x + y * y);
 }

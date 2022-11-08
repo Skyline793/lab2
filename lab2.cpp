@@ -57,8 +57,8 @@ int main()
                 cs[i][j].CalcSquare(ptr);
                 cout << *ptr << endl;
             }
-            catch (const char* msg) {
-                cout << "Вызвано исключение " << msg << endl;
+            catch (exception& e) {
+                cout << "Вызвано исключение " << e.what()  << endl;
             }
         }
     }
