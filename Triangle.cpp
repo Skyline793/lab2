@@ -34,7 +34,7 @@ void Triangle::Read() { //метод ввода
             cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
             cin >> strIndex;
             index = stoi(strIndex);
-            if (index < 0 || index > 4) throw 0;
+            if (index < 0 || index >= Figure::colors->length()) throw 0;
             correct = 1;
         }
         catch (invalid_argument& e) {
@@ -106,7 +106,7 @@ void Triangle::CalcPerimeter(double& rez) { //метод вычисления периметра с возвр
 }
 
 ostream& operator<< (ostream& out, Triangle tr) { //перегруженный оператор вывода
-    if (tr.colorIndex < 0 || tr.colorIndex > 4) throw exception("Выбранный индекс цвета вне диапазона!");
+    if (tr.colorIndex < 0 || tr.colorIndex >= Figure::colors->length()) throw exception("Выбранный индекс цвета вне диапазона!");
     out << "Треугольник с вершинами " << tr.A << ", " << tr.B << ", " << tr.C << ". Цвет фигуры: " << Figure::colors[tr.colorIndex] << endl;
     return out;
 }

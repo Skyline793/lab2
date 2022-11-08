@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Comparison.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="Parallelogram.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Angle.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="Comparison.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Parallelogram.h" />
     <ClInclude Include="Point.h" />

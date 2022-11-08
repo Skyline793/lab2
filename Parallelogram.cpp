@@ -31,7 +31,7 @@ void Parallelogram::Read() { //метод ввода
             cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
             cin >> strIndex;
             index = stoi(strIndex);
-            if (index < 0 || index > 4) throw 0;
+            if (index < 0 || index >= Figure::colors->length()) throw 0;
             correct = 1;
         }
         catch (invalid_argument& e) {
@@ -117,7 +117,7 @@ void Parallelogram::CalcPerimeter(double& rez) //метод вычисления периметра с во
 }
 
 ostream& operator<< (ostream& out, Parallelogram pr) { //перегруженный оператор вывода
-    if (pr.colorIndex < 0 || pr.colorIndex > 4) throw exception("Выбранный индекс цвета вне диапазона!");
-    out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b << "Цвет фигуры: " << Figure::colors[pr.colorIndex];
+    if (pr.colorIndex < 0 || pr.colorIndex >= Figure::colors->length()) throw exception("Выбранный индекс цвета вне диапазона!");
+    out << "Параллелограмм, построенный на векторах:" << endl << pr.a << pr.b << "Цвет фигуры: " << Figure::colors[pr.colorIndex] << endl;
     return out;
 }

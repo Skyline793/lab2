@@ -61,7 +61,7 @@ void Circle::Read() { //метод ввода
             cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
             cin >> strIndex;
             index = stoi(strIndex);
-            if (index < 0 || index > 4) throw 0;
+            if (index < 0 || index >= Figure::colors->length()) throw 0;
             correct = 1;
         }
         catch (invalid_argument& e) {
@@ -139,7 +139,7 @@ void Circle::CalcPerimeter(double& rez) { //метод вычисления периметра с возвращ
 }
 
 ostream& operator<< (ostream& out, Circle c) { //перегруженный оператор вывода
-    if (c.colorIndex < 0 || c.colorIndex > 4) throw exception("Выбранный индекс цвета вне диапазона!");
+    if (c.colorIndex < 0 || c.colorIndex >= Figure::colors->length()) throw exception("Выбранный индекс цвета вне диапазона!");
     out << "Окружность с центром в точке " << c.Center << " и радиусом R=" << c.R << ". Цвет фигуры: " << Figure::colors[c.colorIndex] << endl;
     return out;
 }
