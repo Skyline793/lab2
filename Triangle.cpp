@@ -14,7 +14,7 @@ Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3): //конструкто
 Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3, int colorIndex): //конструктор с параметрами
     A(x1, y1), B(x2, y2), C(x3, y3)
 {
-    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
+    if (colorIndex < 0 || colorIndex >= Figure::N) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
 }
 
@@ -32,7 +32,8 @@ void Triangle::Read() { //метод ввода
     while (!correct) {
         try
         {
-            cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
+            cout << "Выберите цвет фигуры:" << endl;
+            Figure::ShowColors();
             cin >> strIndex;
             index = stoi(strIndex);
             SetColorIndex(index);

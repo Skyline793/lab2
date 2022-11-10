@@ -22,13 +22,30 @@ int main()
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    Triangle t1(3, 1, 0, 3, -3, 6), t2(4, 1, 6, 1, -3, -4);
-    Circle c1(3, 2, -3.5), c2(4, 1, 4.4);
-    Parallelogram p1(3, 1, 5, 2), p2(1, -2, 3, -6);
-    Vector v1(1, 3), v2(4, 5);
-    Point tch1, tch2;
-
-   
+    //тест оператора присваивания
+    cout << "тест оператора присваивания" << endl;
+    Point tchk(4, 1, "C");
+    Vector vect;
+    cout << tchk << endl << vect << endl;
+    vect = tchk;
+    cout << tchk << endl << vect << endl;
+    //тест работы вируальной функции
+    cout << "\nтест работы вируальной функции" << endl;
+    Point* p = new Point(1, 3, "A");
+    Vector* v = new Vector(2, -4);
+    cout << *p << endl << *v;
+    p = v;
+    cout << *p << endl << *v;
+    p->Read();
+    cout << *p << endl << *v;
+    //тест шаблона класса
+    cout << "\nтест шаблона класса" << endl;
+    Parallelogram pr1(4, 1, -2, 3), pr2(1, -4, 4, 7);
+    Circle c1(3, 4, 4.3), c2(-2, 3, 3.6);
+    cout << pr1 << pr2;
+    cout << "Большая площадь: " << Comparison<Parallelogram>::CompareSquare(pr1, pr2) << endl;
+    cout << c1 << c2;
+    cout << "Больший периметр: " << Comparison<Circle>::ComparePerimeter(c1, c2);
     cin.get(); cin.get();
 }
 

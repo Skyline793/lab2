@@ -75,6 +75,7 @@ Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на 
 void Vector::operator= (Point p) { //перегруженный оператор присваивания 
     this->X = p.GetX();
     this->Y = p.GetY();
+    this->metka = p.GetMetka();
 }
 
 Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева

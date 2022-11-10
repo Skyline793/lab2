@@ -20,7 +20,7 @@ Circle::Circle(int x, int y, double R, int colorIndex): //конструктор с параметр
     Center(x, y)
 {
     if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
-    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
+    if (colorIndex < 0 || colorIndex >= Figure::N) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
     this->R = R;
 }
@@ -29,7 +29,7 @@ Circle::Circle(int x, int y, double R, string metka, int colorIndex): //конструк
     Center(x, y, metka)
 {
     if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
-    if (colorIndex < 0 || colorIndex >= Figure::colors->length()) throw invalid_argument("Индекс цвета вне диапазона");
+    if (colorIndex < 0 || colorIndex >= Figure::N) throw invalid_argument("Индекс цвета вне диапазона");
     this->colorIndex = colorIndex;
     this->R = R;
 }
@@ -57,7 +57,7 @@ void Circle::Read() { //метод ввода
             correct = 1;
         }
         catch (invalid_argument& e) {
-            cout << e.what() << " Повторите ввод : " << endl;
+            cout << e.what() << " Повторите ввод: " << endl;
         }
         cin.ignore(1024, '\n');
     }
@@ -65,7 +65,8 @@ void Circle::Read() { //метод ввода
     while (!correct) {
         try
         {
-            cout << "Выберите цвет фигуры:\n0 - без цвета\n1 - красный\n2 - синий\n3 - зеленый\n4 - желтый" << endl;
+            cout << "Выберите цвет фигуры:" << endl;
+            Figure::ShowColors();
             cin >> strIndex;
             index = stoi(strIndex);
             SetColorIndex(index);
