@@ -1,18 +1,18 @@
 #include "FigureArray.h"
 
-int wantedColor;
-bool condByMaxSquare(Figure* f1, Figure* f2);
-bool condByMinSquare(Figure* f1, Figure* f2);
-bool condByMaxPerimeter(Figure* f1, Figure* f2);
-bool condByMinPerimeter(Figure* f1, Figure* f2);
-bool condColor(Figure* f);
+int wantedColor; //переменная для хранения искомого индекса цвета
+bool condByMaxSquare(Figure* f1, Figure* f2); //предикат сортировки по возрастанию площади
+bool condByMinSquare(Figure* f1, Figure* f2); //предикат сортировки по убыванию площади
+bool condByMaxPerimeter(Figure* f1, Figure* f2); //предикат сортировки по возрастанию периметра
+bool condByMinPerimeter(Figure* f1, Figure* f2); //предикат сортировки по убыванию периметра
+bool condColor(Figure* f); //предикат поиска фигур по цвету
 
-void FigureArray::Add(Figure* f)
+void FigureArray::Add(Figure* f) //метод добавления фигуры
 {
 	vect.push_back(f);
 }
 
-void FigureArray::Read()
+void FigureArray::Read() //метод добавления фигуры с вводом через консоль
 {
 	int type;
 	do
@@ -46,50 +46,49 @@ void FigureArray::Read()
 	}
 }
 
-void FigureArray::Display()
+void FigureArray::Display() //метод вывода объектов вектора
 {
 	vector<Figure*>::iterator ir;
 	for (ir = vect.begin(); ir != vect.end(); ++ir) {
 		(*ir)->Display();
-		cout << (*ir)->CalcSquare() << endl << (*ir)->CalcPerimeter() << endl;
 	}
 }
 
-void FigureArray::Insert(Figure* f, int ind)
+void FigureArray::Insert(Figure* f, int ind) //метод вставки объекта на определнное место
 {
 	if (ind >= vect.size()) throw new exception("Индекс вне диапазона");
 	vector<Figure*>::iterator it = vect.begin() + ind;
 	vect.insert(it, f);
 }
 
-void FigureArray::Delete(int ind)
+void FigureArray::Delete(int ind) //метод удаления объекта из вектора
 {
 	if (ind >= vect.size()) throw new exception("Индекс вне диапазона");
 	vector<Figure*>::iterator it = vect.begin() + ind;
 	vect.erase(it);
 }
 
-void FigureArray::SortByMaxSquare()
+void FigureArray::SortByMaxSquare() //метод сортировки по возрастанию площади фигур
 {
 	sort(vect.begin(), vect.end(), condByMaxSquare);
 }
 
-void FigureArray::SortByMinSquare()
+void FigureArray::SortByMinSquare() //метод сортировки по убыванию площади фигур
 {
 	sort(vect.begin(), vect.end(), condByMinSquare);
 }
 
-void FigureArray::SortByMaxPerimeter()
+void FigureArray::SortByMaxPerimeter() //метод сортировки по возрастанию периметра фигур
 {
 	sort(vect.begin(), vect.end(), condByMaxPerimeter);
 }
 
-void FigureArray::SortByMinPerimeter()
+void FigureArray::SortByMinPerimeter() //метод сортировки по убыванию периметра фигур
 {
 	sort(vect.begin(), vect.end(), condByMinPerimeter);
 }
 
-void FigureArray::FindColor(int colorIndex)
+void FigureArray::DisplayColorFigures(int colorIndex) //метод поиска фигур определенного цвета
 {
 	bool found = 0;
 	wantedColor = colorIndex;
@@ -107,27 +106,43 @@ void FigureArray::FindColor(int colorIndex)
 	if (!found) cout << "Не найдены" << endl;
 }
 
-bool condByMaxSquare(Figure* f1, Figure* f2)
+FigureArray FigureArray::GetColorFigures(int colorIndex) //метод поиска фигур определенного цвета
+{
+	FigureArray colorArr;
+	wantedColor = colorIndex;
+	vector<Figure*>::iterator it = vect.begin(), ir;
+	while (it != vect.end()) {
+		ir = find_if(it, vect.end(), condColor);
+		if (ir != vect.end()) {
+			colorArr.Add((*ir));
+			it = ++ir;
+		}
+		else break;
+	}
+	return colorArr;
+}
+
+bool condByMaxSquare(Figure* f1, Figure* f2) //предикат сортировки по возрастанию площади
 {
 	return f1->CalcSquare() < f2->CalcSquare();
 }
 
-bool condByMinSquare(Figure* f1, Figure* f2)
+bool condByMinSquare(Figure* f1, Figure* f2) //предикат сортировки по убыванию площади
 {
 	return f1->CalcSquare() > f2->CalcSquare();
 }
 
-bool condByMaxPerimeter(Figure* f1, Figure* f2)
+bool condByMaxPerimeter(Figure* f1, Figure* f2) //предикат сортировки по возрастанию периметра
 {
 	return f1->CalcPerimeter() < f2->CalcPerimeter();
 }
 
-bool condByMinPerimeter(Figure* f1, Figure* f2)
+bool condByMinPerimeter(Figure* f1, Figure* f2) //предикат сортировки по убыванию периметра
 {
 	return f1->CalcPerimeter() > f2->CalcPerimeter();
 }
 
-bool condColor(Figure* f)
+bool condColor(Figure* f) //предикат поиска по цвету
 {
 	return f->GetColorIndex() == wantedColor;
 }

@@ -29,6 +29,14 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    Circle c1(1,1, 2), c2(2,2, 3, 0), c3(2,2,3,0);
+    FigureArray arr, newArr;
+    arr.Add(&c1);
+    arr.Add(&c2);
+    arr.Add(&c3);
+    arr.Display();
+    arr.DisplayColorFigures(0);
+    newArr.Display();
     cin.get(); cin.get();
 }
 
