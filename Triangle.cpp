@@ -46,6 +46,11 @@ void Triangle::Read() { //метод ввода
     }
 }
 
+void Triangle::Display()
+{
+    cout << "“реугольник с вершинами " << A << ", " << B << ", " << C << ". ÷вет фигуры: " << Figure::colors[colorIndex] << endl;
+}
+
 double Triangle::CalcSquare() { //метод вычислени€ площади
     int x1 = A.GetX(), y1 = A.GetY();
     int x2 = B.GetX(), y2 = B.GetY();

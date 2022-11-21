@@ -13,6 +13,11 @@ void Figure::SetColorIndex(int colorIndex)
 	this->colorIndex = colorIndex;
 }
 
+int Figure::GetColorIndex()
+{
+	return colorIndex;
+}
+
 void Figure::ShowColors() //статический метод вывода списка цветов
 {
 	for (int i = 0; i < N; i++)

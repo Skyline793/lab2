@@ -43,6 +43,11 @@ void Parallelogram::Read() { //метод ввода
     }
 }
 
+void Parallelogram::Display()
+{
+    cout << "Параллелограмм, построенный на векторах:" << endl << a << b << "Цвет фигуры: " << Figure::colors[colorIndex] << endl;
+}
+
 double Parallelogram::CalcSquare() { //метод вычисления площади
     double S, len_a, len_b, prod, cosinus, sinus;
     len_a = a.CalcVectLen();

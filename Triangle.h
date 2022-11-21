@@ -10,6 +10,7 @@ public:
     Triangle(int x1, int y1, int x2, int y2, int x3, int y3); //конструктор с параметрами 
     Triangle(int x1, int y1, int x2, int y2, int x3, int y3, int colorIndex); //конструктор с параметрами
     void Read(); //метод ввода
+    void Display();
     double CalcSquare(); //метод вычисления площади
     void CalcSquare(double* rez); //метод вычисления площади с возвращением параметра через указатель
     void CalcSquare(double& rez); //метод вычисления площади с возвращением параметра по ссылке

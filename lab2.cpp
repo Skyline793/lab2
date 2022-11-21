@@ -11,41 +11,24 @@
 #include "Parallelogram.h"
 #include "Figure.h"
 #include "Comparison.h"
+#include "FigureArray.h"
+#include <vector>
+#include <algorithm>
 #define PI 3.14159265335
 
 using namespace std;
 
-
+bool cond(Figure* f1, Figure* f2)
+{
+    if (f1->CalcSquare() < f2->CalcSquare())
+        return 1;
+    else return 0;
+}
 
 int main()
 {
-
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    //тест оператора присваивания
-    cout << "тест оператора присваивания" << endl;
-    Point tchk(4, 1, "C");
-    Vector vect;
-    cout << tchk << endl << vect << endl;
-    vect = tchk;
-    cout << tchk << endl << vect << endl;
-    //тест работы вируальной функции
-    cout << "\nтест работы вируальной функции" << endl;
-    Point* p = new Point(1, 3, "A");
-    Vector* v = new Vector(2, -4);
-    cout << *p << endl << *v;
-    p = v;
-    cout << *p << endl << *v;
-    p->Read();
-    cout << *p << endl << *v;
-    //тест шаблона класса
-    cout << "\nтест шаблона класса" << endl;
-    Parallelogram pr1(4, 1, -2, 3), pr2(1, -4, 4, 7);
-    Circle c1(3, 4, 4.3), c2(-2, 3, 3.6);
-    cout << pr1 << pr2;
-    cout << "Большая площадь: " << Comparison<Parallelogram>::CompareSquare(pr1, pr2) << endl;
-    cout << c1 << c2;
-    cout << "Больший периметр: " << Comparison<Circle>::ComparePerimeter(c1, c2);
     cin.get(); cin.get();
 }
 

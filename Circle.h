@@ -13,6 +13,7 @@ public:
     Circle(int x, int y, double R, string metka, int colorIndex); //конструктор с параметрами
     void SetR(double R); //метод установки радиуса
     void Read(); //метод ввода
+    void Display();
     void PrintEquation(); //метод вывода уравнения окружности
     double CalcSquare(); //метод вычисления площади круга
     void CalcSquare(double* rez); //метод вычисления площади с возвращением параметра через указатель

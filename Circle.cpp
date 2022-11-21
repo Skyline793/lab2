@@ -79,6 +79,11 @@ void Circle::Read() { //метод ввода
     }
 }
 
+void Circle::Display()
+{
+    cout << "ќкружность с центром в точке " << Center << " и радиусом R=" << R << ". ÷вет фигуры: " << Figure::colors[colorIndex] << endl;
+}
+
 void Circle::PrintEquation() { //метод вывода уравнени€ окружности
     int x = Center.GetX();
     int y = Center.GetY();

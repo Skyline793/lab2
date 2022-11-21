@@ -11,7 +11,9 @@ public:
 	static const string colors[]; //массив цветов фигуры
 	Figure(); //конструктор 
 	void SetColorIndex(int colorIndex); //метод установки индекса цвета
+	int GetColorIndex();
 	static void ShowColors(); //статический метод вывода списка цветов
+	virtual void Display() = 0;
 	virtual double CalcSquare() = 0; //чисто виртуальный метод вычисления площади
 	virtual double CalcPerimeter() = 0; //чисто виртуальный метод вычисления периметра
 };
