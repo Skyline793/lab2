@@ -25,15 +25,6 @@ Circle::Circle(int x, int y, double R, int colorIndex): //конструктор с параметр
     this->R = R;
 }
 
-Circle::Circle(int x, int y, double R, string metka, int colorIndex): //конструктор с параметрами
-    Center(x, y, metka)
-{
-    if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");
-    if (colorIndex < 0 || colorIndex >= Figure::N) throw invalid_argument("Индекс цвета вне диапазона");
-    this->colorIndex = colorIndex;
-    this->R = R;
-}
-
 void Circle::SetR(double R) //метод установки радиуса
 {
     if (R <= 0) throw invalid_argument("Радиус должен быть положительным!");

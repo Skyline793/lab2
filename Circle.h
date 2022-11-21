@@ -10,7 +10,6 @@ public:
     Circle(); //конструктор без параметров
     Circle(int x, int y, double R); //конструктор с параметрами
     Circle(int x, int y, double R, int colorIndex); //конструктор с параметрами
-    Circle(int x, int y, double R, string metka, int colorIndex); //конструктор с параметрами
     void SetR(double R); //метод установки радиуса
     void Read(); //метод ввода
     void Display();

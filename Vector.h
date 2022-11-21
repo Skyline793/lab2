@@ -5,7 +5,6 @@ class Vector : public Point {
 public:
     Vector(); //конструктор без параметров
     Vector(int x, int y); //конструктор с параметрами
-    Vector(int x, int y, string metka); //конструктор с параметрами
     void Read(); //метод ввода
     double CalcVectLen(); //метод вычисления длины вектора
     void CalcVectLen(double* rez); //метод вычисления длины вектора с возвращением параметра через указатель

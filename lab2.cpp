@@ -29,13 +29,45 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    Circle c1(1,1, 2), c2(2,2, 3, 0), c3(2,2,3,0);
     FigureArray arr, newArr;
-    arr.Add(&c1);
-    arr.Add(&c2);
-    arr.Add(&c3);
+    //добавление фигур
+    arr.Add(new Circle(0,0,1,0));
+    arr.Add(new Circle(2,1,2.3,3));
+    arr.Add(new Triangle(-4,3, 0, -2, 3,5, 1));
+    arr.Add(new Parallelogram(5, 4, 1, -6, 1));
+    arr.Add(new Parallelogram(-3, 5, 1, -4, 2));
+    //ввод фигуры
+    arr.Read();
+    //вывод фигуры
     arr.Display();
-    arr.DisplayColorFigures(0);
+    cout << endl;
+    //сортировка по возрастанию площади
+    cout << "сортировка по возрастанию площади" << endl;
+    arr.SortByMaxSquare();
+    arr.Display();
+    cout << endl;
+    //сортировка по убыванию площади
+    cout << "сортировка по убыванию площади" << endl;
+    arr.SortByMinSquare();
+    arr.Display();
+    cout << endl;
+    //сортировка по возрастанию периметра
+    cout << "сортировка по возрастанию периметра" << endl;
+    arr.SortByMaxPerimeter();
+    arr.Display();
+    cout << endl;
+    //сортировка по убыванию периметра
+    cout << "сортировка по убыванию периметра" << endl;
+    arr.SortByMinPerimeter();
+    arr.Display();
+    cout << endl;
+    //вывод фигур красного цвета
+    cout << "вывод фигур красного цвета" << endl;
+    arr.DisplayColorFigures(1);
+    cout << endl;
+    //получение массива фигур без цвета
+    cout << "получение массива фигур без цвета" << endl;
+    newArr = arr.GetColorFigures(0);
     newArr.Display();
     cin.get(); cin.get();
 }

@@ -11,11 +11,6 @@ Vector::Vector(int x, int y) : //конструктор с параметрами
 {
 }
 
-Vector::Vector(int x, int y, string metka) : //конструктор с параметрами
-    Point(x, y, metka)
-{
-}
-
 void Vector::Read() { //метод вывода
     bool correct = 0;
     int x, y;
@@ -34,9 +29,7 @@ void Vector::Read() { //метод вывода
         }
         cin.ignore(1024, '\n');
     }
-    cout << "Введите идентификатор вектора (Enter, чтобы не создавать идентификатор): ";
-    getline(cin, metka);
-    *this = Vector(x, y, metka);
+    *this = Vector(x, y);
 }
 
 double Vector::CalcVectLen() { //метод вычисления длины вектора
@@ -75,7 +68,6 @@ Vector Vector::operator*(int k) { //перегруженный оператор умножения вектора на 
 void Vector::operator= (Point p) { //перегруженный оператор присваивания 
     this->X = p.GetX();
     this->Y = p.GetY();
-    this->metka = p.GetMetka();
 }
 
 Vector operator* (int k, Vector v) { //перегруженный оператор умножения вектора на число слева
@@ -93,6 +85,6 @@ Vector operator+ (Vector v1, Vector v2) { //дружественный перегруженный оператор
 }
 
 ostream& operator<< (ostream& out, Vector v) { //перегруженный оператор вывода
-    cout << "Вектор " << v.metka << " с координатами: (" << v.X << ", " << v.Y << ")" << endl;
+    cout << "Вектор " << " с координатами: (" << v.X << ", " << v.Y << ")" << endl;
     return out;
 }

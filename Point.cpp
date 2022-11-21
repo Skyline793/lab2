@@ -16,13 +16,6 @@ Point::Point(int X, int Y) { //конструктор с параметрами
 	counter++;
 }
 
-Point::Point(int X, int Y, string metka) { //конструктор с параметрами
-	this->X = X;
-	this->Y = Y;
-	this->metka = metka;
-	counter++;
-}
-
 Point::~Point() { //деструктор
 	counter--;
 }
@@ -33,10 +26,6 @@ void Point::SetX(int X) { //метод установки значения X
 
 void Point::SetY(int Y) { //метод установки значения Y
 	this->Y = Y;
-}
-
-void Point::SetMetka(string metka) { //метод установки значения идентификатора
-	this->metka = metka;
 }
 
 void Point::Read() { //метод ввода
@@ -57,9 +46,7 @@ void Point::Read() { //метод ввода
 		}
 		cin.ignore(1024, '\n');
 	}
-	cout << "Введите идентификатор точки (Enter, чтобы не создавать идентификатор): ";
-	getline(cin, metka);
-	*this = Point(x, y, metka);
+	*this = Point(x, y);
 }
 
 int Point::GetX() { //метод получения координаты X
@@ -67,11 +54,7 @@ int Point::GetX() { //метод получения координаты X
 }
 
 int Point::GetY() { //метод получения координаты Y
-    return Y;
-}
-
-string Point::GetMetka() { //метод получения идентификатора
-	return metka;
+	return Y;
 }
 
 void Point::PolarCoords() { //метод перевода в полярные координаты
@@ -117,6 +100,6 @@ Point Point::operator++(int) //перегруженный оператор постфиксного инкремента
 }
 
 ostream& operator<< (ostream& out, Point p) { //перегруженный оператор вывода
-	out << p.metka << "(" << p.X << "," << p.Y << ")";
+	out << "(" << p.X << "," << p.Y << ")";
 	return out;
 }
